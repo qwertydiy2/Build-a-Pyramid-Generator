@@ -43,7 +43,7 @@ html {
   height: 100%;
   background-color: #000;
 }
-.form-heading, .form-heading-lite, h1 {
+h1, #pyramid-form {
   font-family: "Roboto", sans-serif;
 }
 .form-heading {
