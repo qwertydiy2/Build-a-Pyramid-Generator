@@ -5,6 +5,9 @@ function generatePyramid() {
     return;
   }
 
+  // Retrieve the selected color
+  const color = document.getElementById('color').value;
+
   // Check which radio button is selected
   const isReversed = document.querySelector('input[name="pyramid-direction"]:checked').value === 'reversed';
 
@@ -22,6 +25,8 @@ function generatePyramid() {
     for (let j = 0; j < (isReversed ? height - i + 1 : i); j++) {
       const pyramidBlock = document.createElement('span');
       pyramidBlock.className = 'pyramid-block';
+      // Apply the selected color to the pyramid block
+      pyramidBlock.style.backgroundColor = color;
       pyramidLayer.appendChild(pyramidBlock);
     }
 
