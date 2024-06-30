@@ -4,6 +4,10 @@ function generatePyramid() {
     alert('Height must be a positive number.');
     return;
   }
+
+  // Check which radio button is selected
+  const isReversed = document.querySelector('input[name="pyramid-direction"]:checked').value === 'reversed';
+
   const pyramidContainer = document.getElementById('pyramid-container');
 
   // Clear the pyramid container
@@ -15,7 +19,7 @@ function generatePyramid() {
     pyramidLayer.className = 'pyramid-layer';
 
     // Create pyramid blocks
-    for (let j = 0; j < i; j++) {
+    for (let j = 0; j < (isReversed ? height - i + 1 : i); j++) {
       const pyramidBlock = document.createElement('span');
       pyramidBlock.className = 'pyramid-block';
       pyramidLayer.appendChild(pyramidBlock);
