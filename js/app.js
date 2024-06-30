@@ -1,5 +1,9 @@
 function generatePyramid() {
   const height = document.getElementById('height').value;
+  if (height <= 0) {
+    alert('Height must be a positive number.');
+    return;
+  }
   const pyramidContainer = document.getElementById('pyramid-container');
 
   // Clear the pyramid container
