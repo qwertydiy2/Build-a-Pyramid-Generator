@@ -42,6 +42,7 @@ html {
   width: 4%;
   height: 100%;
   background-color: #000;
+  margin: 0;
 }
 h1, #pyramid-form {
   font-family: "Roboto", sans-serif;
