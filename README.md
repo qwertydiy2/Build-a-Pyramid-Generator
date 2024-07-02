@@ -10,7 +10,7 @@ Clone the repository to your local machine:
 git clone https://github.com/qwertydiy2/pyramid-generator.git
 ```
 
-Copyright (C) 2023 Rene Yibowei
+Copyright (C) 2024 Rene Yibowei
 Use of this software is govered by the Business Source License included in the LICENSE.TXT file and at www.mariadb.com/bsl11.
 
 Change Date: Four years from the date the Licensed Work is published.
