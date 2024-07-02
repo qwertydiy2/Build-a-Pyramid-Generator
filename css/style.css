@@ -27,7 +27,6 @@ html {
   position: relative;
   height: 100vh;
   width: 100vw;
-
 }
 .pyramid-layer {
   /*max-width: fit-content;*/
@@ -44,7 +43,8 @@ html {
   background-color: #000;
   margin: 0;
 }
-h1, #pyramid-form {
+h1,
+#pyramid-form {
   font-family: "Roboto", sans-serif;
 }
 .form-heading {
@@ -277,4 +277,3 @@ textarea {
     page-break-after: avoid;
   }
 }
-
