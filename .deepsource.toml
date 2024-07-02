@@ -1,0 +1,16 @@
+version = 1
+
+[[analyzers]]
+name = "test-coverage"
+
+[[analyzers]]
+name = "javascript"
+
+  [analyzers.meta]
+  environment = ["browser"]
+
+[[transformers]]
+name = "standardjs"
+
+[[transformers]]
+name = "prettier"
