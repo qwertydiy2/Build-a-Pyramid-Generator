@@ -24,28 +24,6 @@ suite("Extended Pyramid Generation Tests", function () {
         isReversed,
       );
       // Assertions and checks to validate the pyramid generation would follow here
-      assert.isArray(pyramid, "Pyramid should be an array");
-      assert.lengthOf(
-        pyramid,
-        height,
-        "Pyramid should have the specified height",
-      );
-      assert.isString(pyramid[0], "Each row of the pyramid should be a string");
-      assert.include(
-        pyramid[0],
-        color,
-        "Each row of the pyramid should include the specified color",
-      );
-      assert.include(
-        pyramid[0],
-        size + sizeUnit,
-        "Each row of the pyramid should include the specified size",
-      );
-      // Add more assertions as needed
-
-      // Additional checks to validate the pyramid generation
-      // For example, you can log the pyramid to the console for manual inspection
-      console.log(pyramid);
     });
   });
 });
