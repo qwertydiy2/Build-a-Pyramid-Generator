@@ -24,6 +24,7 @@
   "dependencies": {
     "chai": "^5.1.1",
     "mocha": "^10.6.0",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "zombie": "^6.1.4"
   }
 }
