@@ -1,3 +1,4 @@
 {
-    "liveServer.settings.multiRootWorkspaceName": "Build-a-Pyramid-Generator"
+    "liveServer.settings.multiRootWorkspaceName": "Build-a-Pyramid-Generator",
+    "liveServer.settings.port": 5501
 }
