@@ -1,4 +1,4 @@
-// import {generatePyramid} from 
+// import {generatePyramid} from
 document
   .getElementById("pyramid-form")
   .addEventListener("submit", function (event) {
