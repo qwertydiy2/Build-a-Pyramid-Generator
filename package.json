@@ -11,13 +11,15 @@
   "scripts": {
     "test": "mocha tests/* -u tdd",
     "start": "webpack serve --open --config webpack.config.dev.js",
-    "build": "webpack --config webpack.config.prod.js"
+    "build": "webpack --config webpack.config.prod.js",
+    "coverage": "nyc npm run test"
   },
   "devDependencies": {
     "chai": "^5.1.1",
     "copy-webpack-plugin": "^11.0.0",
     "html-webpack-plugin": "^5.6.0",
     "mocha": "^10.6.0",
+    "nyc": "^17.0.0",
     "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4",
