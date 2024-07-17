@@ -9,7 +9,7 @@
   "license": "",
   "author": "",
   "scripts": {
-    "test": "mocha tests/*.js -u tdd",
+    "test": "mocha tests/* -u tdd",
     "start": "webpack serve --open --config webpack.config.dev.js",
     "build": "webpack --config webpack.config.prod.js"
   },
@@ -24,6 +24,7 @@
     "webpack-merge": "^5.10.0"
   },
   "dependencies": {
+    "jsdom": "^24.1.0",
     "typescript": "^5.5.3",
     "zombie": "^6.1.4"
   }

@@ -1,3 +1,4 @@
+// import {generatePyramid} from 
 document
   .getElementById("pyramid-form")
   .addEventListener("submit", function (event) {
@@ -55,25 +56,3 @@ function generatePyramid(height, color, size, sizeUnit, isReversed) {
     pyramidContainer.appendChild(pyramidLayer);
   }
 }
-
-document
-  .getElementById("pyramid-form")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const height = parseInt(document.getElementById("height").value, 10);
-    const color = document.getElementById("colour").value;
-    const size = parseInt(document.getElementById("size").value, 10);
-    const sizeUnit = document.querySelector(
-      'input[name="size-unit"]:checked',
-    ).value;
-    const isReversed =
-      document.querySelector('input[name="pyramid-direction"]:checked')
-        .value === "reversed";
-
-    try {
-      generatePyramid(height, color, size, sizeUnit, isReversed);
-    } catch (error) {
-      alert(error.message);
-    }
-  });
