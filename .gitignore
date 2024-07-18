@@ -151,3 +151,6 @@ Gemfile.lock
 # Jetbrains Files
 .editorconfig
 .idea/
+
+# Github Actions Runner Folder
+./actions-runner
