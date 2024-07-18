@@ -153,4 +153,4 @@ Gemfile.lock
 .idea/
 
 # Github Actions Runner Folder
-.actions-runner/
+/actions-runner
