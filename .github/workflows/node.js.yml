@@ -29,8 +29,9 @@ jobs:
     - run: npm ci
     # - run: npm run build
     - run: npm test
-    - run: npx nyc --reporter=lcov npm test && npx codecov
+    - run: npm run coverage
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v4.0.1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
+        directory: ./coverage/lcov-report
