@@ -12,7 +12,7 @@
     "test": "mocha tests/* -u tdd",
     "start": "webpack serve --open --config webpack.config.dev.js",
     "build": "webpack --config webpack.config.prod.js",
-    "coverage": "nyc npm run test"
+    "coverage": "nyc --reporter=lcov npm run test"
   },
   "devDependencies": {
     "chai": "^5.1.1",
