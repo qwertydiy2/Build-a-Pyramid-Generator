@@ -1,15 +1,7 @@
-// Import the assert method from Chai
-
 import { assert } from "chai";
 import { JSDOM } from "jsdom";
-// const { JSDOM } = import('jsdom');
-// const { suite, test, suiteSetup } = import('mocha');
-
-// let generatePyramid;
 
 async function setupEnvironment() {
-  // chai=import('chai');
-  // assert=chai.assert;
   const dom = await JSDOM.fromFile("index.html", {
     runScripts: "dangerously",
     resources: "usable",
@@ -20,9 +12,6 @@ async function setupEnvironment() {
   await new Promise((resolve) => {
     dom.window.onload = resolve;
   });
-
-  // Assuming a function named 'generatePyramid' is defined in one of the scripts
-  // generatePyramid = global.window.generatePyramid();
 }
 
 suite("Pyramid Generation Tests", function () {

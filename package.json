@@ -9,10 +9,10 @@
   "license": "",
   "author": "",
   "scripts": {
-    "test": "mocha tests/* -u tdd",
+    "test": "mocha -u tdd",
     "start": "webpack serve --open --config webpack.config.dev.js",
     "build": "webpack --config webpack.config.prod.js",
-    "coverage": "nyc --reporter=lcov npm run test"
+    "coverage": "c8 --reporter=lcov npm run test"
   },
   "devDependencies": {
     "chai": "^5.1.1",
@@ -26,6 +26,7 @@
     "webpack-merge": "^5.10.0"
   },
   "dependencies": {
+    "domture": "^1.4.1",
     "jsdom": "^24.1.0",
     "typescript": "^5.5.3",
     "zombie": "^6.1.4"
