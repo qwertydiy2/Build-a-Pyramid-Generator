@@ -154,3 +154,9 @@ Gemfile.lock
 
 # Github Actions Runner Folder
 /actions-runner
+
+# VSCode Files
+.vscode/
+
+# Linux Files
+bin/
