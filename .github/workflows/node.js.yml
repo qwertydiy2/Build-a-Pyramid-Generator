@@ -20,8 +20,6 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - name: Checkout Git
-      run: git fetch origin refs/pull/:${{ github.event.pull_request.number }}/head:${{ github.event.pull_request.head.sha }} && git checkout FETCH_HEAD
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
