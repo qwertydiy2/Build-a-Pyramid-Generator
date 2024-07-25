@@ -15,6 +15,7 @@
     "coverage": "c8 --reporter=lcov npm run test"
   },
   "devDependencies": {
+    "c8": "^10.1.2",
     "chai": "^5.1.1",
     "copy-webpack-plugin": "^11.0.0",
     "html-webpack-plugin": "^5.6.0",
@@ -26,7 +27,6 @@
     "webpack-merge": "^5.10.0"
   },
   "dependencies": {
-    "domture": "^1.4.1",
     "jsdom": "^24.1.0",
     "typescript": "^5.5.3",
     "zombie": "^6.1.4"
