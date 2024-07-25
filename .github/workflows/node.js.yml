@@ -25,7 +25,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci && npm install -g mocha c8 --save-dev
+    - run: npm ci
+    - run: npm install -g mocha c8 --save-dev
     # - run: npm run build
     - run: npm run coverage
     - name: Upload coverage reports to Codecov
