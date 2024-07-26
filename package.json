@@ -9,7 +9,7 @@
   "license": "",
   "author": "",
   "scripts": {
-    "test": "mocha -u tdd",
+    "test": "mocha -u tdd test/*",
     "start": "webpack serve --open --config webpack.config.dev.js",
     "build": "webpack --config webpack.config.prod.js",
     "coverage": "c8 --reporter=lcov npm run test"
