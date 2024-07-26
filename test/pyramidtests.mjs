@@ -14,13 +14,13 @@ async function setupEnvironment() {
   });
 }
 
-suite("Pyramid Generation Tests", function () {
+suite("generatePyramid", function () {
   suiteSetup(async function () {
     // Setup environment before each test
     await setupEnvironment();
   });
 
-  test("each pyramid layer has the correct number of blocks", function () {
+  test("should have correct number of blocks in each layer", function () {
     // Generate pyramid with 5 levels, normal direction
     global.window.generatePyramid(5, "#ff0000", 20, "px", false);
     const pyramidContainer = document.getElementById("pyramid-container");
@@ -43,7 +43,7 @@ suite("Pyramid Generation Tests", function () {
 
     assert.equal(pyramidLayers.length, 5, "Pyramid does not have 5 layers");
 
-    // Check each layer for the correct num ber of blocks
+    // Check each layer for the correct number of blocks
     for (let i = 0; i < pyramidLayers.length; i++) {
       const layerBlocks = pyramidLayers[i].getElementsByClassName("pyramid-block");
       const expectedBlocks = i + 1; // For a normal pyramid, expected blocks equal the layer index + 1
@@ -59,32 +59,32 @@ suite("Pyramid Generation Tests", function () {
     // Check the first layer's block color and size as an example
   });
 
-  test("throws error for non-positive height values", function () {
+  test("should throw error for non-positive height values", function () {
     assert.throws(() => window.generatePyramid(0, "#ff0000", 20, "px", false), "Height must be a positive number.");
     assert.throws(() => window.generatePyramid(-1, "#ff0000", 20, "px", false), "Height must be a positive number.");
   });
 
-  test("throws error when pixel size exceeds viewport width", function () {
+  test("should throw error when pixel size exceeds viewport width", function () {
     global.window.innerWidth = 500;
     assert.throws(() => window.generatePyramid(5, "#ff0000", 600, "px", false), "Size must not exceed the viewport width.");
     assert.throws(() => window.generatePyramid(1, "#ff0000", 600, "px", false), "Size must not exceed the viewport width.");
     assert.throws(() => window.generatePyramid(5, "#ff0000", 130, "px", false), "Size must not exceed the viewport width.");
   });
 
-  test("creates pyramid layers equal to height", function () {
+  test("should create pyramid layers equal to height", function () {
     global.window.generatePyramid(3, "#00ff00", 50, "px", false);
     const pyramidLayers = document.getElementsByClassName("pyramid-layer");
     assert.equal(pyramidLayers.length, 3, "Pyramid does not have 3 layers");
     for( let i = 0; i < pyramidLayers.length; i++) {
       const currentPyramidLayer = pyramidLayers[i].getElementsByClassName("pyramid-block");
-      assert.equal(currentPyramidLayer.length, i + 1, `Pyramid does not have {i + 1} layers`);
+      assert.equal(currentPyramidLayer.length, i + 1, `Pyramid does not have ${i + 1} layers`);
       for( let j = 0; j < currentPyramidLayer.length; j++) {
-        assert.equal(currentPyramidLayer[j].style.width, "50px", "Pyramid does not have 3 layers");
+        assert.equal(currentPyramidLayer[j].style.width, "50px", "Block width does not match");
       }
     }
   });
 
-  test("creates correct number of blocks in each layer for non-reversed pyramid", function () {
+  test("should create correct number of blocks in each layer for non-reversed pyramid", function () {
     global.window.generatePyramid(3, "#00ff00", 50, "px", false);
     const pyramidLayers = document.getElementsByClassName("pyramid-layer");
     for (let i = 0; i < pyramidLayers.length; i++) {
@@ -93,7 +93,7 @@ suite("Pyramid Generation Tests", function () {
     }
   });
 
-  test("creates correct number of blocks in each layer for reversed pyramid", function () {
+  test("should create correct number of blocks in each layer for reversed pyramid", function () {
     global.window.generatePyramid(3, "#00ff00", 50, "px", true);
     const pyramidLayers = document.getElementsByClassName("pyramid-layer");
     for (let i = 0; i < pyramidLayers.length; i++) {
@@ -102,14 +102,14 @@ suite("Pyramid Generation Tests", function () {
     }
   });
 
-  test("does not exceed viewport width when size unit is percentage", function () {
+  test("should not exceed viewport width when size unit is percentage", function () {
     global.window.innerWidth = 1000;
     global.window.generatePyramid(5, "#0000ff", 101, "%", false);
     const pyramidBlocks = document.getElementsByClassName("pyramid-block");
     assert.equal(pyramidBlocks.length, 0, "Pyramid blocks should not be created when size exceeds 100%");
   });
 
-  test("applies specified color to pyramid blocks", function () {
+  test("should apply specified color to pyramid blocks", function () {
     global.window.generatePyramid(3, "#ff0000", 50, "px", false);
     const pyramidBlocks = document.getElementsByClassName("pyramid-block");
     for (let i = 0; i < pyramidBlocks.length; i++) {
@@ -145,5 +145,26 @@ suite("Pyramid Generation Tests", function () {
     for (let i = 0; i < pyramidBlocks6.length; i++) {
        assert.equal(pyramidBlocks6[i].style.backgroundColor, "rgb(124, 244, 133)", "Block color does not match");
     }
+  });
+});
+
+suite("getPyramidParameters", function () {
+  suiteSetup(async function () {
+    await setupEnvironment();
+  });
+
+  test("should return the correct pyramid parameters", function () {
+    // Fill out the form fields
+    document.getElementById("height").value = 5;
+    document.getElementById("colour").value = "#ff0000";
+    document.querySelector("input[name='pyramid-direction'][value='normal']").checked = true;
+    document.getElementById("size").value = 20;
+    document.querySelector("input[name='size-unit'][value='px']").checked = true;
+
+    const pyramidParameters = window.getPyramidParameters();
+    assert.equal(pyramidParameters.height, 5, "Incorrect pyramid height");
+    assert.equal(pyramidParameters.color, "#ff0000", "Incorrect pyramid color");
+    assert.equal(pyramidParameters.size, 20, "Incorrect pyramid size");
+    assert.equal(pyramidParameters.unit, "px", "Incorrect pyramid size unit");
   });
 });
