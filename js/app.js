@@ -28,7 +28,7 @@ function generatePyramid(height, color, size, sizeUnit, isReversed) {
     throw new Error("Height must be a positive number.");
   }
 
-  if (sizeUnit === "px" && size > window.innerWidth) {
+  if (sizeUnit === "px" && size*height > window.innerWidth) {
     throw new Error("Size must not exceed the viewport width.");
   }
 
