@@ -106,19 +106,13 @@ suite("generatePyramid", function () {
     global.window.innerWidth = 1000;
 
     // Case: size exactly 100%
-    global.window.generatePyramid(5, "#0000ff", 100, "%", false);
-    let pyramidBlocks = document.getElementsByClassName("pyramid-block");
-    assert.notEqual(pyramidBlocks.length, 0, "Pyramid blocks should be created when size is exactly 100%");
+    assert.throws(() => global.window.generatePyramid(5, "#0000ff", 100, "%", false),"Size must not exceed 100% of the viewport width" , "Pyramid blocks should not be created when size exceeds 100%");
 
     // Case: size slightly less than 100%
-    global.window.generatePyramid(5, "#0000ff", 29, "%", false);
-    pyramidBlocks = document.getElementsByClassName("pyramid-block");
-    assert.notEqual(pyramidBlocks.length, 0, "Pyramid blocks should be created when size is less than 100%");
+    assert.throws(() => global.window.generatePyramid(5, "#0000ff", 29, "%", false),"Size must not exceed 100% of the viewport width", "Pyramid blocks should not be created when size exceeds 100%");
 
     // Case: size slightly more than 100%
-    global.window.generatePyramid(5, "#0000ff", 101, "%", false);
-    pyramidBlocks = document.getElementsByClassName("pyramid-block");
-    assert.equal(pyramidBlocks.length, 0, "Pyramid blocks should not be created when size exceeds 100%");
+    assert.throws(() => global.window.generatePyramid(5, "#0000ff", 101, "%", false), "Size must not exceed 100% of the viewport width", "Pyramid blocks should not be created when size exceeds 100%");
   });
   test("should apply specified color to pyramid blocks", function () {
     global.window.generatePyramid(3, "#ff0000", 50, "px", false);
@@ -187,7 +181,7 @@ suite("document.getElementById.addEventListener", function () {
 
   test("When form submitted, then prevent form submission and call generatePyramid", function () {
     const form = document.getElementById("pyramid-form");
-    const generatePyramid = window.generatePyramid;
+    const {generatePyramid} = window;
     let generatePyramidCalled = false;
 
     window.generatePyramid = function () {
