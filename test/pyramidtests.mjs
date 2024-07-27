@@ -104,11 +104,22 @@ suite("generatePyramid", function () {
 
   test("should not exceed viewport width when size unit is percentage", function () {
     global.window.innerWidth = 1000;
+
+    // Case: size exactly 100%
+    global.window.generatePyramid(5, "#0000ff", 100, "%", false);
+    let pyramidBlocks = document.getElementsByClassName("pyramid-block");
+    assert.notEqual(pyramidBlocks.length, 0, "Pyramid blocks should be created when size is exactly 100%");
+
+    // Case: size slightly less than 100%
+    global.window.generatePyramid(5, "#0000ff", 29, "%", false);
+    pyramidBlocks = document.getElementsByClassName("pyramid-block");
+    assert.notEqual(pyramidBlocks.length, 0, "Pyramid blocks should be created when size is less than 100%");
+
+    // Case: size slightly more than 100%
     global.window.generatePyramid(5, "#0000ff", 101, "%", false);
-    const pyramidBlocks = document.getElementsByClassName("pyramid-block");
+    pyramidBlocks = document.getElementsByClassName("pyramid-block");
     assert.equal(pyramidBlocks.length, 0, "Pyramid blocks should not be created when size exceeds 100%");
   });
-
   test("should apply specified color to pyramid blocks", function () {
     global.window.generatePyramid(3, "#ff0000", 50, "px", false);
     const pyramidBlocks = document.getElementsByClassName("pyramid-block");
