@@ -168,3 +168,31 @@ suite("getPyramidParameters", function () {
     assert.equal(pyramidParameters.unit, "px", "Incorrect pyramid size unit");
   });
 });
+
+suite("document.getElementById.addEventListener", function () {
+  suiteSetup(async function () {
+    await setupEnvironment();
+  });
+
+  test("When form submitted, then prevent form submission and call generatePyramid", function () {
+    const form = document.getElementById("pyramid-form");
+    const generatePyramid = window.generatePyramid;
+    let generatePyramidCalled = false;
+
+    window.generatePyramid = function () {
+      generatePyramidCalled = true;
+    };
+
+    const event = new window.Event("submit", {
+      bubbles: true,
+      cancelable: true,
+    });
+
+    form.dispatchEvent(event);
+
+    assert.isTrue(event.defaultPrevented, "Form submission was not prevented");
+    assert.isTrue(generatePyramidCalled, "generatePyramid was not called");
+
+    window.generatePyramid = generatePyramid; // Restore original function
+  });
+});
