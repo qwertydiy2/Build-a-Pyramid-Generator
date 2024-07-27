@@ -28,8 +28,10 @@ function generatePyramid(height, color, size, sizeUnit, isReversed) {
     throw new Error("Height must be a positive number.");
   }
 
-  if (sizeUnit === "px" && size*height > window.innerWidth) {
+  if (sizeUnit === "px" && size * height > window.innerWidth) {
     throw new Error("Size must not exceed the viewport width.");
+  } else if (sizeUnit === "%" && size * height > 100) {
+    throw new Error("Size must not exceed 100% of the viewport width.");
   }
 
   const pyramidContainer = document.getElementById("pyramid-container");
