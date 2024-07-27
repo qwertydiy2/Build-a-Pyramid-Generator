@@ -170,7 +170,7 @@ suite("getPyramidParameters", function () {
     assert.equal(pyramidParameters.height, 5, "Incorrect pyramid height");
     assert.equal(pyramidParameters.color, "#ff0000", "Incorrect pyramid color");
     assert.equal(pyramidParameters.size, 20, "Incorrect pyramid size");
-    assert.equal(pyramidParameters.unit, "px", "Incorrect pyramid size unit");
+    assert.equal(pyramidParameters.sizeUnit, "px", "Incorrect pyramid size unit");
   });
 });
 
