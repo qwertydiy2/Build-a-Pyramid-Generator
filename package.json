@@ -9,7 +9,7 @@
   "license": "",
   "author": "",
   "scripts": {
-    "test": "mocha -u tdd test/*",
+    "test": "mocha -u tdd 'test/**/*.{js,mjs,ts,tsx}' --timeout 60000",
     "start": "webpack serve --open --config webpack.config.dev.js",
     "build": "webpack --config webpack.config.prod.js",
     "coverage": "c8 --reporter=lcov npm run test"
