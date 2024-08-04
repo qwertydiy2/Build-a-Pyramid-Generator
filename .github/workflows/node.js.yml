@@ -20,8 +20,7 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - run: git fetch git://github.com/qwertydiy2/Build-a-Pyramid-Generator.git main
-    - run: git merge FETCH_HEAD
+    - run: git fetch origin
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
