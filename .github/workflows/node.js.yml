@@ -20,6 +20,7 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
+    - run: git config --global --add safe.directory C:/actions-runner/_work/Build-a-Pyramid-Generator/Build-a-Pyramid-Generator
     - run: git fetch origin
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
