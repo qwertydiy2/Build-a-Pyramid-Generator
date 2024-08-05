@@ -5,8 +5,6 @@ document
     // Prevent the form from being submitted
     event.preventDefault();
 
-    // Generate the pyramid
-    generatePyramid();
   });
 
 function getPyramidParameters() {
