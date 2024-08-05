@@ -23,7 +23,7 @@ function getPyramidParameters() {
   return { height, color, size, sizeUnit, isReversed };
 }
 
-function generatePyramid(height, color, size, sizeUnit, isReversed) {
+function generatePyramid({height, color, size, sizeUnit, isReversed}) {
   if (isNaN(height) || height <= 0) {
     throw new Error("Height must be a positive number.");
   }
