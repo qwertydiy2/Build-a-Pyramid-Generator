@@ -1,10 +1,8 @@
 // import {generatePyramid} from
-document
-  .getElementById("pyramid-form")
-  .addEventListener("submit", event => {
-    // Prevent the form from being submitted
-    event.preventDefault();
-  });
+document.getElementById("pyramid-form").addEventListener("submit", (event) => {
+  // Prevent the form from being submitted
+  event.preventDefault();
+});
 
 /**
  * Retrieves pyramid parameters from the user input.
@@ -23,7 +21,6 @@ function getPyramidParameters() {
 
   return { height, color, size, sizeUnit, isReversed };
 }
-
 
 /**
  * Generates a pyramid structure based on the provided parameters.
@@ -65,4 +62,3 @@ function generatePyramid({ height, color, size, sizeUnit, isReversed }) {
     pyramidContainer.appendChild(pyramidLayer);
   }
 }
-
