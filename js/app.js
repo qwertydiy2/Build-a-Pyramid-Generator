@@ -5,8 +5,6 @@ document
     // Prevent the form from being submitted
     event.preventDefault();
 
-    // Generate the pyramid
-    generatePyramid();
   });
 
 function getPyramidParameters() {
@@ -23,13 +21,15 @@ function getPyramidParameters() {
   return { height, color, size, sizeUnit, isReversed };
 }
 
-function generatePyramid(height, color, size, sizeUnit, isReversed) {
+function generatePyramid({height, color, size, sizeUnit, isReversed}) {
   if (isNaN(height) || height <= 0) {
     throw new Error("Height must be a positive number.");
   }
 
-  if (sizeUnit === "px" && size > window.innerWidth) {
+  if (sizeUnit === "px" && size * height > window.innerWidth) {
     throw new Error("Size must not exceed the viewport width.");
+  } else if (sizeUnit === "%" && size * height > 100) {
+    throw new Error("Size must not exceed 100% of the viewport width.");
   }
 
   const pyramidContainer = document.getElementById("pyramid-container");
