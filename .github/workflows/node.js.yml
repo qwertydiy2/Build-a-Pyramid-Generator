@@ -20,13 +20,14 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
+    - run: git pull origin main
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: npm install -g mocha c8 --save-dev
+        
+    - run: npm install
     # - run: npm run build
     - run: npm run coverage
     - name: Upload coverage reports to Codecov
