@@ -14,13 +14,13 @@ async function setupEnvironment() {
   });
 }
 
-suite("generatePyramid", function () {
-  suiteSetup(async function () {
+suite("generatePyramid", () => {
+  suiteSetup(async () => {
     // Setup environment before each test
     await setupEnvironment();
   });
 
-  test("should have correct number of blocks in each layer", function () {
+  test("should have correct number of blocks in each layer", () => {
     // Generate pyramid with 5 levels, normal direction
     global.window.generatePyramid({
       height: 5,
@@ -45,7 +45,7 @@ suite("generatePyramid", function () {
       );
     }
   });
-  test("should generate a pyramid with correct parameters and block counts", function () {
+  test("should generate a pyramid with correct parameters and block counts", () => {
     // Generate pyramid with 5 levels, normal direction, size in pixels
     window.generatePyramid({
       height: 5,
@@ -130,7 +130,7 @@ suite("generatePyramid", function () {
     }
   });
 
-  test("should throw error for non-positive height values", function () {
+  test("should throw error for non-positive height values", () => {
     assert.throws(
       () =>
         window.generatePyramid({
@@ -155,7 +155,7 @@ suite("generatePyramid", function () {
     );
   });
 
-  test("should throw error when pixel size exceeds viewport width", function () {
+  test("should throw error when pixel size exceeds viewport width", () => {
     global.window.innerWidth = 500;
     assert.throws(
       () =>
@@ -192,7 +192,7 @@ suite("generatePyramid", function () {
     );
   });
 
-  test("should create pyramid layers equal to height", function () {
+  test("should create pyramid layers equal to height", () => {
     global.window.generatePyramid({
       height: 3,
       color: "#00ff050",
@@ -221,7 +221,7 @@ suite("generatePyramid", function () {
     }
   });
 
-  test("should create correct number of blocks in each layer for non-reversed pyramid", function () {
+  test("should create correct number of blocks in each layer for non-reversed pyramid", () => {
     global.window.generatePyramid({
       height: 3,
       color: "#00ff00",
@@ -241,7 +241,7 @@ suite("generatePyramid", function () {
     }
   });
 
-  test("should create correct number of blocks in each layer for reversed pyramid", function () {
+  test("should create correct number of blocks in each layer for reversed pyramid", () => {
     global.window.generatePyramid({
       height: 3,
       color: "#00ff00",
@@ -261,7 +261,7 @@ suite("generatePyramid", function () {
     }
   });
 
-  test("should not exceed viewport width when size unit is percentage", function () {
+  test("should not exceed viewport width when size unit is percentage", () => {
     global.window.innerWidth = 1000;
 
     // Case: size exactly 100%
@@ -306,7 +306,7 @@ suite("generatePyramid", function () {
       "Pyramid blocks should not be created when size exceeds 100%",
     );
   });
-  test("should apply specified color to pyramid blocks", function () {
+  test("should apply specified color to pyramid blocks", () => {
     global.window.generatePyramid({
       height: 3,
       color: "#ff0000",
@@ -405,12 +405,12 @@ suite("generatePyramid", function () {
   });
 });
 
-suite("getPyramidParameters", function () {
-  suiteSetup(async function () {
+suite("getPyramidParameters", () => {
+  suiteSetup(async () => {
     await setupEnvironment();
   });
 
-  test("should return the correct pyramid parameters", function () {
+  test("should return the correct pyramid parameters", () => {
     // Fill out the form fields
     document.getElementById("height").value = 5;
     document.getElementById("colour").value = "#ff0000";
@@ -433,12 +433,12 @@ suite("getPyramidParameters", function () {
   });
 });
 
-suite("document.getElementById.addEventListener", function () {
-  suiteSetup(async function () {
+suite("document.getElementById.addEventListener", () => {
+  suiteSetup(async () => {
     await setupEnvironment();
   });
 
-  test("When form submitted, then prevent form submission", function () {
+  test("When form submitted, then prevent form submission", () => {
     const form = document.getElementById("pyramid-form");
 
     const event = new window.Event("submit", {
