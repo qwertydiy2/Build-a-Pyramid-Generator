@@ -40,10 +40,11 @@ suite("generatePyramid", function () {
     }
   });
   test("should generate a pyramid with correct parameters and block counts", function () {
-    // Generate pyramid with 5 levels, normal direction, size in pixels
-    window.generatePyramid({height: 5, color: "#ff0000", size: 20, sizeUnit: "px", isReversed: false});
-    let pyramidContainer = document.getElementById("pyramid-container");
-    let pyramidLayers = pyramidContainer.getElementsByClassName("pyramid-layer");
+    // Generate pyramid with 5 levels, normal direction
+    window.generatePyramid(5, "#ff0000", 20, "px", false);
+    const pyramidContainer = document.getElementById("pyramid-container");
+    const pyramidLayers =
+      pyramidContainer.getElementsByClassName("pyramid-layer");
 
     assert.equal(pyramidLayers.length, 5, "Pyramid does not have 5 layers");
 
@@ -85,10 +86,18 @@ suite("generatePyramid", function () {
 
     // Check each layer for the correct number of blocks
     for (let i = 0; i < pyramidLayers.length; i++) {
-      const layerBlocks = pyramidLayers[i].getElementsByClassName("pyramid-block");
+      const layerBlocks =
+        pyramidLayers[i].getElementsByClassName("pyramid-block");
       const expectedBlocks = i + 1; // For a normal pyramid, expected blocks equal the layer index + 1
-      assert.equal(layerBlocks.length, expectedBlocks, `Layer ${i + 1} does not have the correct number of blocks`);
-      assert.isNotEmpty(layerBlocks, "First layer of pyramid should have blocks");
+      assert.equal(
+        layerBlocks.length,
+        expectedBlocks,
+        `Layer ${i + 1} does not have the correct number of blocks`,
+      );
+      assert.isNotEmpty(
+        layerBlocks,
+        "First layer of pyramid should have blocks",
+      );
       for (let j = 0; j < layerBlocks.length; j++) {
         assert.equal(layerBlocks[j].style.width, "10%", "Block width does not match");
         assert.equal(layerBlocks[j].style.backgroundColor, "rgb(0, 255, 0)", "Block color does not match");
@@ -127,8 +136,13 @@ suite("generatePyramid", function () {
     global.window.generatePyramid({height:3, color:"#00ff00", size:50, sizeUnit:"px", isReversed:false});
     const pyramidLayers = document.getElementsByClassName("pyramid-layer");
     for (let i = 0; i < pyramidLayers.length; i++) {
-      const layerBlocks = pyramidLayers[i].getElementsByClassName("pyramid-block");
-      assert.equal(layerBlocks.length, i + 1, `Layer ${i + 1} does not have the correct number of blocks`);
+      const layerBlocks =
+        pyramidLayers[i].getElementsByClassName("pyramid-block");
+      assert.equal(
+        layerBlocks.length,
+        i + 1,
+        `Layer ${i + 1} does not have the correct number of blocks`,
+      );
     }
   });
 
@@ -136,8 +150,13 @@ suite("generatePyramid", function () {
     global.window.generatePyramid({height:3, color:"#00ff00", size:50, sizeUnit:"px", isReversed:true});
     const pyramidLayers = document.getElementsByClassName("pyramid-layer");
     for (let i = 0; i < pyramidLayers.length; i++) {
-      const layerBlocks = pyramidLayers[i].getElementsByClassName("pyramid-block");
-      assert.equal(layerBlocks.length, 3 - i, `Layer ${i + 1} does not have the correct number of blocks`);
+      const layerBlocks =
+        pyramidLayers[i].getElementsByClassName("pyramid-block");
+      assert.equal(
+        layerBlocks.length,
+        3 - i,
+        `Layer ${i + 1} does not have the correct number of blocks`,
+      );
     }
   });
 
@@ -157,37 +176,61 @@ suite("generatePyramid", function () {
     global.window.generatePyramid({height:3, color:"#ff0000", size:50, sizeUnit:"px", isReversed:false});
     const pyramidBlocks = document.getElementsByClassName("pyramid-block");
     for (let i = 0; i < pyramidBlocks.length; i++) {
-      assert.equal(pyramidBlocks[i].style.backgroundColor, "rgb(255, 0, 0)", "Block color does not match");
+      assert.equal(
+        pyramidBlocks[i].style.backgroundColor,
+        "rgb(255, 0, 0)",
+        "Block color does not match",
+      );
     }
 
     global.window.generatePyramid({height:3, color:"#00ff00", size:50, sizeUnit:"px", isReversed:false});
     const pyramidBlocks2 = document.getElementsByClassName("pyramid-block");
     for (let i = 0; i < pyramidBlocks2.length; i++) {
-      assert.equal(pyramidBlocks2[i].style.backgroundColor, "rgb(0, 255, 0)", "Block color does not match");
+      assert.equal(
+        pyramidBlocks2[i].style.backgroundColor,
+        "rgb(0, 255, 0)",
+        "Block color does not match",
+      );
     }
 
     global.window.generatePyramid({height:3, color:"#0000ff", size:50, sizeUnit:"px", isReversed:false});
     const pyramidBlocks3 = document.getElementsByClassName("pyramid-block");
     for (let i = 0; i < pyramidBlocks3.length; i++) {
-      assert.equal(pyramidBlocks3[i].style.backgroundColor, "rgb(0, 0, 255)", "Block color does not match");
+      assert.equal(
+        pyramidBlocks3[i].style.backgroundColor,
+        "rgb(0, 0, 255)",
+        "Block color does not match",
+      );
     }
 
     global.window.generatePyramid({height:3, color:"#ffffff", size:50, sizeUnit:"px", isReversed:false});
     const pyramidBlocks4 = document.getElementsByClassName("pyramid-block");
     for (let i = 0; i < pyramidBlocks4.length; i++) {
-      assert.equal(pyramidBlocks4[i].style.backgroundColor, "rgb(255, 255, 255)", "Block color does not match");
+      assert.equal(
+        pyramidBlocks4[i].style.backgroundColor,
+        "rgb(255, 255, 255)",
+        "Block color does not match",
+      );
     }
 
     global.window.generatePyramid({height:3, color:"#000000", size:50, sizeUnit:"px", isReversed:false});
     const pyramidBlocks5 = document.getElementsByClassName("pyramid-block");
     for (let i = 0; i < pyramidBlocks5.length; i++) {
-      assert.equal(pyramidBlocks5[i].style.backgroundColor, "rgb(0, 0, 0)", "Block color does not match");
+      assert.equal(
+        pyramidBlocks5[i].style.backgroundColor,
+        "rgb(0, 0, 0)",
+        "Block color does not match",
+      );
     }
 
     global.window.generatePyramid({height:3, color:"#7cf485", size:50, sizeUnit:"px", isReversed:false});
     const pyramidBlocks6 = document.getElementsByClassName("pyramid-block")
     for (let i = 0; i < pyramidBlocks6.length; i++) {
-       assert.equal(pyramidBlocks6[i].style.backgroundColor, "rgb(124, 244, 133)", "Block color does not match");
+      assert.equal(
+        pyramidBlocks6[i].style.backgroundColor,
+        "rgb(124, 244, 133)",
+        "Block color does not match",
+      );
     }
   });
 });
