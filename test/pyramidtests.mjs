@@ -24,13 +24,19 @@ suite("generatePyramid", function () {
     // Generate pyramid with 5 levels, normal direction
     global.window.generatePyramid({height:5, color:"#ff0000", size:20, sizeUnit:"px", isReversed:false});
     const pyramidContainer = document.getElementById("pyramid-container");
-    const pyramidLayers = pyramidContainer.getElementsByClassName("pyramid-layer");
+    const pyramidLayers =
+      pyramidContainer.getElementsByClassName("pyramid-layer");
 
     // Assert that each layer has the correct number of blocks
     for (let i = 0; i < pyramidLayers.length; i++) {
-      const layerBlocks = pyramidLayers[i].getElementsByClassName("pyramid-block");
+      const layerBlocks =
+        pyramidLayers[i].getElementsByClassName("pyramid-block");
       const expectedBlocks = i + 1; // For a normal pyramid, expected blocks equal the layer index + 1
-      assert.equal(layerBlocks.length, expectedBlocks, `Layer ${i + 1} does not have the correct number of blocks`);
+      assert.equal(
+        layerBlocks.length,
+        expectedBlocks,
+        `Layer ${i + 1} does not have the correct number of blocks`,
+      );
     }
   });
   test("should generate a pyramid with correct parameters and block counts", function () {
@@ -43,13 +49,30 @@ suite("generatePyramid", function () {
 
     // Check each layer for the correct number of blocks
     for (let i = 0; i < pyramidLayers.length; i++) {
-      const layerBlocks = pyramidLayers[i].getElementsByClassName("pyramid-block");
+      const layerBlocks =
+        pyramidLayers[i].getElementsByClassName("pyramid-block");
       const expectedBlocks = i + 1; // For a normal pyramid, expected blocks equal the layer index + 1
-      assert.equal(layerBlocks.length, expectedBlocks, `Layer ${i + 1} does not have the correct number of blocks`);
-      assert.isNotEmpty(layerBlocks, "First layer of pyramid should have blocks");
+      assert.equal(
+        layerBlocks.length,
+        expectedBlocks,
+        `Layer ${i + 1} does not have the correct number of blocks`,
+      );
+      assert.isNotEmpty(
+        layerBlocks,
+        "First layer of pyramid should have blocks",
+      );
       for (let j = 0; j < layerBlocks.length; j++) {
-        assert.equal(layerBlocks[j].style.width, "20px", "Block width does not match");
-        assert.equal(layerBlocks[j].style.backgroundColor, "rgb(255, 0, 0)", "Block color does not match");
+        assert.equal(
+          layerBlocks[j].style.width,
+          "20px",
+          "Block width does not match",
+        );
+        assert.equal(
+          layerBlocks[j].style.backgroundColor,
+          "rgb(255, 0, 0)",
+          "Block color does not match",
+        );
+        // assert.equal(layerBlocks[j].style.height, "4", "Block height does not match");
       }
     }
 
