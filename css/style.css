@@ -155,10 +155,6 @@ textarea {
  * `::before` to contain the top-margins of child elements.
  */
 
-.clearfix::after {
-  clear: both;
-}
-
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
    These examples override the primary ('mobile first') styles.
