@@ -1,13 +1,16 @@
 version = 1
 
-[[analyzers]]
-name = "test-coverage"
+test_patterns = ["test/*"]
 
 [[analyzers]]
 name = "javascript"
 
   [analyzers.meta]
-  environment = ["browser"]
+  environment = [
+    "browser",
+    "nodejs",
+    "mocha"
+  ]
 
 [[transformers]]
 name = "standardjs"
