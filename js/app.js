@@ -5,8 +5,6 @@ document
     // Prevent the form from being submitted
     event.preventDefault();
 
-    // Generate the pyramid
-    generatePyramid();
   });
 
 function getPyramidParameters() {
@@ -23,7 +21,7 @@ function getPyramidParameters() {
   return { height, color, size, sizeUnit, isReversed };
 }
 
-function generatePyramid(height, color, size, sizeUnit, isReversed) {
+function generatePyramid({height, color, size, sizeUnit, isReversed}) {
   if (isNaN(height) || height <= 0) {
     throw new Error("Height must be a positive number.");
   }
