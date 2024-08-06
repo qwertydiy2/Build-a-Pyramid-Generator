@@ -6,6 +6,10 @@ document
     event.preventDefault();
   });
 
+/**
+ * Retrieves pyramid parameters from the user input.
+ * @returns {Object} Object containing height, color, size, sizeUnit, and isReversed properties.
+ */
 function getPyramidParameters() {
   const height = parseInt(document.getElementById("height").value, 10);
   const color = document.getElementById("colour").value;
@@ -20,6 +24,12 @@ function getPyramidParameters() {
   return { height, color, size, sizeUnit, isReversed };
 }
 
+
+/**
+ * Generates a pyramid structure based on the provided parameters.
+ * @param {Object} params - Object containing height, color, size, sizeUnit, and isReversed properties.
+ * @throws {Error} If height is not a positive number or if size exceeds viewport width based on sizeUnit.
+ */
 function generatePyramid({ height, color, size, sizeUnit, isReversed }) {
   if (isNaN(height) || height <= 0) {
     throw new Error("Height must be a positive number.");
@@ -55,3 +65,4 @@ function generatePyramid({ height, color, size, sizeUnit, isReversed }) {
     pyramidContainer.appendChild(pyramidLayer);
   }
 }
+
