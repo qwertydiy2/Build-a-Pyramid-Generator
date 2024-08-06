@@ -54,9 +54,9 @@ function generatePyramid({ height, color, size, sizeUnit, isReversed }) {
       pyramidBlock.style.backgroundColor = color;
 
       if (sizeUnit === "px") {
-        pyramidBlock.style.width = size + "px";
+        pyramidBlock.style.width = `${size}px`;
       } else {
-        pyramidBlock.style.width = size + "%";
+        pyramidBlock.style.width = `${size}%`;
       }
       pyramidBlock.style.height = size;
       pyramidLayer.appendChild(pyramidBlock);
