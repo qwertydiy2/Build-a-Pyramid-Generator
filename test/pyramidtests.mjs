@@ -244,15 +244,22 @@ suite("getPyramidParameters", function () {
     // Fill out the form fields
     document.getElementById("height").value = 5;
     document.getElementById("colour").value = "#ff0000";
-    document.querySelector("input[name='pyramid-direction'][value='normal']").checked = true;
+    document.querySelector(
+      "input[name='pyramid-direction'][value='normal']",
+    ).checked = true;
     document.getElementById("size").value = 20;
-    document.querySelector("input[name='size-unit'][value='px']").checked = true;
+    document.querySelector("input[name='size-unit'][value='px']").checked =
+      true;
 
     const pyramidParameters = window.getPyramidParameters();
     assert.equal(pyramidParameters.height, 5, "Incorrect pyramid height");
     assert.equal(pyramidParameters.color, "#ff0000", "Incorrect pyramid color");
     assert.equal(pyramidParameters.size, 20, "Incorrect pyramid size");
-    assert.equal(pyramidParameters.sizeUnit, "px", "Incorrect pyramid size unit");
+    assert.equal(
+      pyramidParameters.sizeUnit,
+      "px",
+      "Incorrect pyramid size unit",
+    );
   });
 });
 
