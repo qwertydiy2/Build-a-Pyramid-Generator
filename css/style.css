@@ -1,6 +1,7 @@
 /*! HTML5 Boilerplate v9.0.1 | MIT License | https://html5boilerplate.com/ */
 
 /* main.css 3.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
+
 /*
  * What follows is the result of much research on cross-browser styling.
  * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
@@ -27,14 +28,16 @@ html {
   height: 100vh;
   width: 100vw;
 }
+
 .pyramid-layer {
-  /*max-width: fit-content;*/
+  /* max-width: fit-content; */
   margin-left: auto;
   margin-right: auto;
   height: 4%;
   width: 100%;
   text-align: center;
 }
+
 .pyramid-block {
   display: inline-block;
   width: 4%;
@@ -42,10 +45,12 @@ html {
   background-color: #000;
   margin: 0;
 }
+
 h1,
 #pyramid-form {
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto, sans-serif;
 }
+
 .form-heading {
   font-size: 1.17em;
   font-weight: bold;
@@ -56,7 +61,7 @@ h1,
   font-weight: bold;
 }
 
-::-moz-selection {
+::selection {
   background: #b3d4fc;
   text-shadow: none;
 }
@@ -161,14 +166,14 @@ textarea {
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (min-width: 35em) {
+@media only screen and (width >= 35em) {
   /* Style adjustments for viewports that meet the condition */
 }
 
 @media print,
-  (-webkit-min-device-pixel-ratio: 1.25),
-  (min-resolution: 1.25dppx),
-  (min-resolution: 120dpi) {
+  (min-device-pixel-ratio: 1.25),
+  (resolution >= 1.25dppx),
+  (resolution >= 120dpi) {
   /* Style adjustments for high resolution devices */
 }
 
@@ -184,6 +189,7 @@ textarea {
   *::after {
     background: #fff !important;
     color: #000 !important;
+
     /* Black prints faster */
     box-shadow: none !important;
     text-shadow: none !important;
