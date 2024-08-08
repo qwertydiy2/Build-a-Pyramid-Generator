@@ -11,7 +11,7 @@ document
  * @returns {Object}
  * Object with height, color, size, sizeUnit, and isReversed.
  */
-function getPyramidParameters() {
+function getPyramidParameters() { // jshint ignore:line
   const height = parseInt(document.getElementById("height").value, 10);
   const color = document.getElementById("colour").value;
   const size = parseInt(document.getElementById("size").value, 10);
@@ -33,7 +33,7 @@ function getPyramidParameters() {
  * @throws {Error}
  * If height isn't positive or if size*sizeUnit exceeds viewport width.
  */
-function generatePyramid({ height, color, size, sizeUnit, isReversed }) {
+function generatePyramid({ height, color, size, sizeUnit, isReversed }) { // jshint ignore:line
   if (isNaN(height) || height <= 0) {
     throw new Error("Height must be a positive number.");
   }
