@@ -37,7 +37,8 @@ suite("generatePyramid", () => {
     for (let i = 0; i < pyramidLayers.length; i++) {
       const layerBlocks =
         pyramidLayers[i].getElementsByClassName("pyramid-block");
-      const expectedBlocks = i + 1; // For a normal pyramid, expected blocks equal the layer index + 1
+      // For a normal pyramid, expected blocks equal the layer index + 1
+      const expectedBlocks = i + 1;
       assert.equal(
         layerBlocks.length,
         expectedBlocks,
@@ -45,7 +46,7 @@ suite("generatePyramid", () => {
       );
     }
   });
-  test("should generate a pyramid with correct parameters and block counts", () => {
+  test("should generate pyramid with correct parameters and block counts", () => {
     // Generate pyramid with 5 levels, normal direction, size in pixels
     window.generatePyramid({
       height: 5,
@@ -64,7 +65,8 @@ suite("generatePyramid", () => {
     for (let i = 0; i < pyramidLayers.length; i++) {
       const layerBlocks =
         pyramidLayers[i].getElementsByClassName("pyramid-block");
-      const expectedBlocks = i + 1; // For a normal pyramid, expected blocks equal the layer index + 1
+      // For a normal pyramid, expected blocks equal the layer index + 1
+      const expectedBlocks = i + 1;
       assert.equal(
         layerBlocks.length,
         expectedBlocks,
@@ -88,7 +90,7 @@ suite("generatePyramid", () => {
       }
     }
 
-    // Edge case: Generate pyramid with 5 levels, normal direction, size in percentage
+    // Edge case: Size in percentage
     window.generatePyramid({
       height: 5,
       color: "#00ff00",
@@ -241,7 +243,8 @@ suite("generatePyramid", () => {
     }
   });
 
-  test("should create correct number of blocks in each layer for reversed pyramid", () => {
+  test("should use right block number in each layer for reversed pyramid",
+    () => {
     global.window.generatePyramid({
       height: 3,
       color: "#00ff00",
