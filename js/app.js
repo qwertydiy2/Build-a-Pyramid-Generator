@@ -8,7 +8,8 @@ document
 
 /**
  * Retrieves pyramid parameters from the user input.
- * @returns {Object} Object containing height, color, size, sizeUnit, and isReversed properties.
+ * @returns {Object}
+ * Object with height, color, size, sizeUnit, and isReversed.
  */
 function getPyramidParameters() {
   const height = parseInt(document.getElementById("height").value, 10);
@@ -27,8 +28,10 @@ function getPyramidParameters() {
 
 /**
  * Generates a pyramid structure based on the provided parameters.
- * @param {Object} params - Object containing height, color, size, sizeUnit, and isReversed properties.
- * @throws {Error} If height is not a positive number or if size exceeds viewport width based on sizeUnit.
+ * @param {Object}
+ * Object with height, color, size, sizeUnit, and isReversed.
+ * @throws {Error}
+ * If height isn't positive or if size*sizeUnit exceeds viewport width.
  */
 function generatePyramid({ height, color, size, sizeUnit, isReversed }) {
   if (isNaN(height) || height <= 0) {
