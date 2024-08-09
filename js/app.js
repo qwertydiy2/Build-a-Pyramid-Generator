@@ -43,8 +43,11 @@ function generatePyramid({height, color, size, sizeUnit, isReversed}) { // jshin
     throw new Error("Size must not exceed 100% of the viewport width.");
   }
 
-  const pyramidContainer = document.getElementById("pyramid-container");
-  pyramidContainer.innerHTML = "";
+  const pyramidContainerRemove = document.getElementById("pyramid-container");
+  const body = document.querySelector("body");
+  body.removeChild(pyramidContainerRemove);
+  const pyramidContainer = body.createElement("div");
+  pyramidContainer.setAttribute('id', 'pyramidContainer');
 
   for (let i = 1; i <= height; i++) {
     const pyramidLayer = document.createElement("div");
