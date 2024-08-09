@@ -158,7 +158,8 @@ suite("generatePyramid", () => {
   });
 
   test("should throw error when pixel size exceeds viewport width", () => {
-    const windowSize = 500;;
+    const windowSize = 500;
+    ;
     global.window.innerWidth = windowSize;
     assert.throws(
       () =>
