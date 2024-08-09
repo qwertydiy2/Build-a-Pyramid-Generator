@@ -158,7 +158,8 @@ suite("generatePyramid", () => {
   });
 
   test("should throw error when pixel size exceeds viewport width", () => {
-    global.window.innerWidth = 500;
+    const windowSize = 500
+    global.window.innerWidth = windowSize;
     assert.throws(
       () =>
         window.generatePyramid({
@@ -332,10 +333,10 @@ suite("generatePyramid", () => {
       sizeUnit: "px",
       isReversed: false,
     });
-    const pyramidBlocks2 = document.getElementsByClassName("pyramid-block");
-    for (let i = 0; i < pyramidBlocks2.length; i++) {
+    const pyramidBlocksTwo = document.getElementsByClassName("pyramid-block");
+    for (let i = 0; i < pyramidBlocksTwo.length; i++) {
       assert.equal(
-        pyramidBlocks2[i].style.backgroundColor,
+        pyramidBlocksTwo[i].style.backgroundColor,
         "rgb(0, 255, 0)",
         "Block color does not match",
       );
@@ -348,10 +349,10 @@ suite("generatePyramid", () => {
       sizeUnit: "px",
       isReversed: false,
     });
-    const pyramidBlocks3 = document.getElementsByClassName("pyramid-block");
-    for (let i = 0; i < pyramidBlocks3.length; i++) {
+    const pyramidBlocksThree = document.getElementsByClassName("pyramid-block");
+    for (let i = 0; i < pyramidBlocksThree.length; i++) {
       assert.equal(
-        pyramidBlocks3[i].style.backgroundColor,
+        pyramidBlocksThree[i].style.backgroundColor,
         "rgb(0, 0, 255)",
         "Block color does not match",
       );
@@ -364,10 +365,10 @@ suite("generatePyramid", () => {
       sizeUnit: "px",
       isReversed: false,
     });
-    const pyramidBlocks4 = document.getElementsByClassName("pyramid-block");
-    for (let i = 0; i < pyramidBlocks4.length; i++) {
+    const pyramidBlocksFour = document.getElementsByClassName("pyramid-block");
+    for (let i = 0; i < pyramidBlocksFour.length; i++) {
       assert.equal(
-        pyramidBlocks4[i].style.backgroundColor,
+        pyramidBlocksFour[i].style.backgroundColor,
         "rgb(255, 255, 255)",
         "Block color does not match",
       );
@@ -380,10 +381,10 @@ suite("generatePyramid", () => {
       sizeUnit: "px",
       isReversed: false,
     });
-    const pyramidBlocks5 = document.getElementsByClassName("pyramid-block");
-    for (let i = 0; i < pyramidBlocks5.length; i++) {
+    const pyramidBlocksFive = document.getElementsByClassName("pyramid-block");
+    for (let i = 0; i < pyramidBlocksFive.length; i++) {
       assert.equal(
-        pyramidBlocks5[i].style.backgroundColor,
+        pyramidBlocksFive[i].style.backgroundColor,
         "rgb(0, 0, 0)",
         "Block color does not match",
       );
@@ -396,10 +397,10 @@ suite("generatePyramid", () => {
       sizeUnit: "px",
       isReversed: false,
     });
-    const pyramidBlocks6 = document.getElementsByClassName("pyramid-block");
-    for (let i = 0; i < pyramidBlocks6.length; i++) {
+    const pyramidBlocksSix = document.getElementsByClassName("pyramid-block");
+    for (let i = 0; i < pyramidBlocksSix.length; i++) {
       assert.equal(
-        pyramidBlocks6[i].style.backgroundColor,
+        pyramidBlocksSix[i].style.backgroundColor,
         "rgb(124, 244, 133)",
         "Block color does not match",
       );
@@ -414,19 +415,20 @@ suite("getPyramidParameters", () => {
 
   test("should return the correct pyramid parameters", () => {
     // Fill out the form fields
+    const pyramidSize=20
     document.getElementById("height").value = 5;
     document.getElementById("colour").value = "#ff0000";
     document.querySelector(
       "input[name='pyramid-direction'][value='normal']",
     ).checked = true;
-    document.getElementById("size").value = 20;
+    document.getElementById("size").value = pyramidSize;
     document.querySelector("input[name='size-unit'][value='px']").checked =
       true;
 
     const pyramidParameters = window.getPyramidParameters();
     assert.equal(pyramidParameters.height, 5, "Incorrect pyramid height");
     assert.equal(pyramidParameters.color, "#ff0000", "Incorrect pyramid color");
-    assert.equal(pyramidParameters.size, 20, "Incorrect pyramid size");
+    assert.equal(pyramidParameters.size, pyramidSize, "Incorrect pyramid size");
     assert.equal(
       pyramidParameters.sizeUnit,
       "px",
