@@ -19,7 +19,7 @@ function getPyramidParameters() { // jshint ignore:line
     'input[name="size-unit"]:checked',
   ).value;
   const isReversed =
-    document.querySelector('input[name="pyramid-direction"]:checked').value === "reversed";
+    "reversed" === document.querySelector('input[name="pyramid-direction"]:checked').value;
 
   return {height, color, size, sizeUnit, isReversed};
 }
@@ -33,13 +33,13 @@ function getPyramidParameters() { // jshint ignore:line
  * If height isn't positive or if size*sizeUnit exceeds viewport width.
  */
 function generatePyramid({height, color, size, sizeUnit, isReversed}) { // jshint ignore:line
-  if (isNaN(height) || height <= 0) {
+  if (isNaN(height) || 0 >= height) {
     throw new Error("Height must be a positive number.");
   }
 
-  if (sizeUnit === "px" && size * height > window.innerWidth) {
+  if ("px" === sizeUnit && size * height > window.innerWidth) {
     throw new Error("Size must not exceed the viewport width.");
-  } else if (sizeUnit === "%" && size * height > 100) {
+  } else if ("%" === sizeUnit && 100 < size * height) {
     throw new Error("Size must not exceed 100% of the viewport width.");
   }
 
@@ -55,7 +55,7 @@ function generatePyramid({height, color, size, sizeUnit, isReversed}) { // jshin
       pyramidBlock.className = "pyramid-block";
       pyramidBlock.style.backgroundColor = color;
 
-      if (sizeUnit === "px") {
+      if ("px" === sizeUnit) {
         pyramidBlock.style.width = `${size}px`;
       } else {
         pyramidBlock.style.width = `${size}%`;
