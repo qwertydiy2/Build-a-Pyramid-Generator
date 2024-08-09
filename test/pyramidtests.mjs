@@ -55,8 +55,8 @@ suite("generatePyramid", () => {
       sizeUnit: "px",
       isReversed: false,
     });
-    let pyramidContainer = document.getElementById("pyramid-container");
-    let pyramidLayers =
+    const pyramidContainer = document.getElementById("pyramid-container");
+    const pyramidLayers =
       pyramidContainer.getElementsByClassName("pyramid-layer");
 
     assert.equal(pyramidLayers.length, 5, "Pyramid does not have 5 layers");
@@ -159,7 +159,7 @@ suite("generatePyramid", () => {
 
   test("should throw error when pixel size exceeds viewport width", () => {
     const windowSize = 500;
-    ;
+
     global.window.innerWidth = windowSize;
     assert.throws(
       () =>
