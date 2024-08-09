@@ -1,5 +1,5 @@
-import { assert } from "chai";
-import { JSDOM } from "jsdom";
+import {assert} from "chai";
+import {JSDOM} from "jsdom";
 
 async function setupEnvironment() {
   const dom = await JSDOM.fromFile("index.html", {
@@ -245,24 +245,24 @@ suite("generatePyramid", () => {
 
   test("should use right block number in each layer for reversed pyramid",
     () => {
-    global.window.generatePyramid({
-      height: 3,
-      color: "#00ff00",
-      size: 50,
-      sizeUnit: "px",
-      isReversed: true,
+      global.window.generatePyramid({
+        height: 3,
+        color: "#00ff00",
+        size: 50,
+        sizeUnit: "px",
+        isReversed: true,
+      });
+      const pyramidLayers = document.getElementsByClassName("pyramid-layer");
+      for (let i = 0; i < pyramidLayers.length; i++) {
+        const layerBlocks =
+          pyramidLayers[i].getElementsByClassName("pyramid-block");
+        assert.equal(
+          layerBlocks.length,
+          3 - i,
+          `Layer ${i + 1} does not have the correct number of blocks`,
+        );
+      }
     });
-    const pyramidLayers = document.getElementsByClassName("pyramid-layer");
-    for (let i = 0; i < pyramidLayers.length; i++) {
-      const layerBlocks =
-        pyramidLayers[i].getElementsByClassName("pyramid-block");
-      assert.equal(
-        layerBlocks.length,
-        3 - i,
-        `Layer ${i + 1} does not have the correct number of blocks`,
-      );
-    }
-  });
 
   test("should not exceed viewport width when size unit is percentage", () => {
     global.window.innerWidth = 1000;

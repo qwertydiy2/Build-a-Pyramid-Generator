@@ -21,7 +21,7 @@ function getPyramidParameters() { // jshint ignore:line
   const isReversed =
     "reversed" === document.querySelector('input[name="pyramid-direction"]:checked').value;
 
-  return { height, color, size, sizeUnit, isReversed };
+  return {height, color, size, sizeUnit, isReversed};
 }
 
 
@@ -32,7 +32,7 @@ function getPyramidParameters() { // jshint ignore:line
  * @throws {Error}
  * If height isn't positive or if size*sizeUnit exceeds viewport width.
  */
-function generatePyramid({ height, color, size, sizeUnit, isReversed }) { // jshint ignore:line
+function generatePyramid({height, color, size, sizeUnit, isReversed}) { // jshint ignore:line
   if (isNaN(height) || 0 >= height) {
     throw new Error("Height must be a positive number.");
   }
