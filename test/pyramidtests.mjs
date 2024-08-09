@@ -46,7 +46,7 @@ suite("generatePyramid", () => {
       );
     }
   });
-  test("should generate pyramid with correct parameters and block counts", () => {
+  test("should generate pyramid with correct parameters & block counts", () => {
     // Generate pyramid with 5 levels, normal direction, size in pixels
     window.generatePyramid({
       height: 5,
@@ -213,7 +213,6 @@ suite("generatePyramid", () => {
         `Pyramid does not have ${i + 1} layers`,
       );
       for (let j = 0; j < currentPyramidLayer.length; j++) {
-        console.log(currentPyramidLayer[j].style.width);
         assert.equal(
           currentPyramidLayer[j].style.width,
           "50px",
