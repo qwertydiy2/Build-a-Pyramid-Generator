@@ -158,7 +158,7 @@ suite("generatePyramid", () => {
   });
 
   test("should throw error when pixel size exceeds viewport width", () => {
-    const windowSize = 500;
+    const windowSize = 500;;
     global.window.innerWidth = windowSize;
     assert.throws(
       () =>
@@ -413,7 +413,7 @@ suite("getPyramidParameters", () => {
 
   test("should return the correct pyramid parameters", () => {
     // Fill out the form fields
-    const pyramidSize = 20
+    const pyramidSize = 20;
     document.getElementById("height").value = 5;
     document.getElementById("colour").value = "#ff0000";
     document.querySelector(
