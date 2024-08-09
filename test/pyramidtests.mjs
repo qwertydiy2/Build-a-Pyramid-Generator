@@ -98,15 +98,15 @@ suite("generatePyramid", () => {
       sizeUnit: "%",
       isReversed: false,
     });
-    pyramidContainer = document.getElementById("pyramid-container");
-    pyramidLayers = pyramidContainer.getElementsByClassName("pyramid-layer");
+    const pyramidContainerTwo = document.getElementById("pyramid-container");
+    const pyramidLayersTwo = pyramidContainerTwo.getElementsByClassName("pyramid-layer");
 
-    assert.equal(pyramidLayers.length, 5, "Pyramid does not have 5 layers");
+    assert.equal(pyramidLayersTwo.length, 5, "Pyramid does not have 5 layers");
 
     // Check each layer for the correct number of blocks
-    for (let i = 0; i < pyramidLayers.length; i++) {
+    for (let i = 0; i < pyramidLayersTwo.length; i++) {
       const layerBlocks =
-        pyramidLayers[i].getElementsByClassName("pyramid-block");
+        pyramidLayersTwo[i].getElementsByClassName("pyramid-block");
       const expectedBlocks = i + 1; // For a normal pyramid, expected blocks equal the layer index + 1
       assert.equal(
         layerBlocks.length,
