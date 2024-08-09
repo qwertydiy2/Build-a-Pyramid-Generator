@@ -9,7 +9,7 @@ async function setupEnvironment() {
   global.window = dom.window;
   global.document = dom.window.document;
   // Wait for scripts to load and execute
-  await new Promise((resolve) => {
+  await new Promise(resolve => {
     dom.window.onload = resolve;
   });
 }
@@ -158,7 +158,7 @@ suite("generatePyramid", () => {
   });
 
   test("should throw error when pixel size exceeds viewport width", () => {
-    const windowSize = 500
+    const windowSize = 500;
     global.window.innerWidth = windowSize;
     assert.throws(
       () =>
@@ -223,7 +223,7 @@ suite("generatePyramid", () => {
     }
   });
 
-  test("should create correct number of blocks in each layer for non-reversed pyramid", () => {
+  test("should create correct number of blocks in each layer for pyramid", () => {
     global.window.generatePyramid({
       height: 3,
       color: "#00ff00",
@@ -264,7 +264,7 @@ suite("generatePyramid", () => {
       }
     });
 
-  test("should not exceed viewport width when size unit is percentage", () => {
+  test("should not exceed viewport width when size unit is %", () => {
     global.window.innerWidth = 1000;
 
     // Case: size exactly 100%
@@ -409,13 +409,11 @@ suite("generatePyramid", () => {
 });
 
 suite("getPyramidParameters", () => {
-  suiteSetup(async () => {
-    await setupEnvironment();
-  });
+  suiteSetup(async () => await setupEnvironment());
 
   test("should return the correct pyramid parameters", () => {
     // Fill out the form fields
-    const pyramidSize=20
+    const pyramidSize = 20
     document.getElementById("height").value = 5;
     document.getElementById("colour").value = "#ff0000";
     document.querySelector(
@@ -438,9 +436,7 @@ suite("getPyramidParameters", () => {
 });
 
 suite("document.getElementById.addEventListener", () => {
-  suiteSetup(async () => {
-    await setupEnvironment();
-  });
+  suiteSetup(async () => await setupEnvironment());
 
   test("When form submitted, then prevent form submission", () => {
     const form = document.getElementById("pyramid-form");
