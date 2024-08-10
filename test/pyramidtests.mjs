@@ -411,7 +411,7 @@ suite("generatePyramid", () => {
 });
 
 suite("getPyramidParameters", () => {
-  suiteSetup(async () => await setupEnvironment());
+  suiteSetup(async () => setupEnvironment());
 
   test("should return the correct pyramid parameters", () => {
     // Fill out the form fields
@@ -438,7 +438,7 @@ suite("getPyramidParameters", () => {
 });
 
 suite("document.getElementById.addEventListener", () => {
-  suiteSetup(async () => await setupEnvironment());
+  suiteSetup(async () => setupEnvironment());
 
   test("When form submitted, then prevent form submission", () => {
     const form = document.getElementById("pyramid-form");
