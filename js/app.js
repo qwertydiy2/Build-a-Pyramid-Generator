@@ -11,9 +11,9 @@ document.getElementById('pyramid-form').addEventListener('submit', event => {
  */
 function getPyramidParameters() {
   // jshint ignore:line
-  const height = parseInt(document.getElementById('height').value, 10);
+  const height = document.getElementById('height').value;
   const color = document.getElementById('colour').value;
-  const size = parseInt(document.getElementById('size').value, 10);
+  const size = document.getElementById('size').value;
   const sizeUnit = document.querySelector(
     'input[name="size-unit"]:checked'
   ).value;
@@ -63,7 +63,7 @@ function createPyramidBlock(color, size, sizeUnit) {
   const pyramidBlock = document.createElement("span");
   pyramidBlock.className = "pyramid-block";
   pyramidBlock.style.backgroundColor = color;
-  const sizeStr = String(size);
+  const sizeStr = String(size,"Failed to convert");
   pyramidBlock.style.width = sizeUnit === "px" ? `${sizeStr}px` : `${sizeStr}%`;
   pyramidBlock.style.height = size;
   return pyramidBlock;
@@ -129,8 +129,8 @@ function generatePyramid({height, color, size, sizeUnit, isReversed}) {
   for (let i = 0; i < height; i++) {
     const blockCount = calculateBlockCount(height, isReversed, i);
     const pyramidLayer = createPyramidLayer(color, size, sizeUnit, blockCount);
-    pyramidContainer.appendChild(pyramidLayer)
+    pyramidContainer.appendChild(pyramidLayer);
   }
 
-  body.appendChild(pyramidContainer)
+  body.appendChild(pyramidContainer);
 }
