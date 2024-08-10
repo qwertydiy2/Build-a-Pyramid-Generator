@@ -27,6 +27,16 @@ function getPyramidParameters() { // jshint ignore:line
 }
 
 
+/**
+ * Validates the parameters for generating a pyramid.
+ *
+ * @param {Object} params - The parameters for generating a pyramid.
+ * @param {number} params.height - The height of the pyramid.
+ * @param {number} params.size - The size of each pyramid block.
+ * @param {string} params.sizeUnit - The unit of measurement for the size.
+ * @throws {Error} If the height is not a positive number.
+ * @throws {Error} If the calculated size exceeds the maximum size based on the size unit.
+ */
 function validatePyramidParameters({height, size, sizeUnit}) {
   if (isNaN(height) || height <= 0) {
     throw new Error("Height must be a positive number.");
@@ -40,6 +50,14 @@ function validatePyramidParameters({height, size, sizeUnit}) {
   }
 }
 
+/**
+ * Creates a pyramid block element.
+ *
+ * @param {string} color - The background color of the pyramid block.
+ * @param {number} size - The size of the pyramid block.
+ * @param {string} sizeUnit - The unit of measurement for the size (either "px" or "%").
+ * @returns {HTMLSpanElement} The created pyramid block element.
+ */
 function createPyramidBlock(color, size, sizeUnit) {
   const pyramidBlock = document.createElement("span");
   pyramidBlock.className = "pyramid-block";
@@ -49,10 +67,27 @@ function createPyramidBlock(color, size, sizeUnit) {
   return pyramidBlock;
 }
 
+/**
+ * Calculates the number of blocks in a layer of a pyramid.
+ * 
+ * @param {number} height - The height of the pyramid.
+ * @param {boolean} isReversed - Indicates whether the pyramid is reversed or not.
+ * @param {number} layerIndex - The index of the layer in the pyramid.
+ * @returns {number} The number of blocks in the specified layer.
+ */
 function calculateBlockCount(height, isReversed, layerIndex) {
   return isReversed ? height - layerIndex : layerIndex + 1;
 }
 
+/**
+ * Creates a pyramid layer with the specified color, size, size unit, and number of blocks.
+ *
+ * @param {string} color - The color of the pyramid layer.
+ * @param {number} size - The size of each pyramid block.
+ * @param {string} sizeUnit - The unit of measurement for the size (e.g., "px", "rem").
+ * @param {number} blocks - The number of blocks in the pyramid layer.
+ * @returns {HTMLDivElement} The created pyramid layer element.
+ */
 function createPyramidLayer(
   color,
   size,
@@ -70,6 +105,16 @@ function createPyramidLayer(
   return pyramidLayer;
 }
 
+/**
+ * Generates a pyramid based on the provided parameters.
+ *
+ * @param {Object} options - The options for generating the pyramid.
+ * @param {number} options.height - The height of the pyramid.
+ * @param {string} options.color - The color of the pyramid blocks.
+ * @param {number} options.size - The size of each pyramid block.
+ * @param {string} options.sizeUnit - The unit of measurement for the size of the pyramid blocks.
+ * @param {boolean} options.isReversed - Indicates whether the pyramid should be reversed.
+ */
 function generatePyramid({height, color, size, sizeUnit, isReversed}) {
   validatePyramidParameters({height, size, sizeUnit});
 
