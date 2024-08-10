@@ -157,7 +157,8 @@ Gemfile.lock
 
 # VSCode Files
 .vscode/
+.vscode/settings.json
 
 # Linux Files
 bin/
-.vscode/settings.json
+
