@@ -49,19 +49,20 @@ function createPyramidBlock(color, size, sizeUnit) {
   return pyramidBlock;
 }
 
+function calculateBlockCount(height, isReversed, layerIndex) {
+  return isReversed ? height - layerIndex : layerIndex + 1;
+}
+
 function createPyramidLayer(
-  height,
   color,
   size,
   sizeUnit,
-  isReversed,
-  layerIndex
+  blocks,
 ) {
   const pyramidLayer = document.createElement("div");
   pyramidLayer.className = "pyramid-layer";
-  const blockCount = isReversed ? height - layerIndex : layerIndex + 1;
 
-  for (let j = 0; j < blockCount; j++) {
+  for (let j = 0; j < blocks; j++) {
     const pyramidBlock = createPyramidBlock(color, size, sizeUnit);
     pyramidLayer.appendChild(pyramidBlock);
   }
@@ -79,13 +80,13 @@ function generatePyramid({height, color, size, sizeUnit, isReversed}) {
   pyramidContainer.setAttribute('id', 'pyramid-container');
 
   for (let i = 0; i < height; i++) {
+    const blockCount = calculateBlockCount(height, isReversed, i)
     const pyramidLayer = createPyramidLayer(
-      height,
       color,
       size,
       sizeUnit,
-      isReversed,
-      i);
+      blockCount
+    );
     pyramidContainer.appendChild(pyramidLayer);
   }
 
