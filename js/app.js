@@ -49,7 +49,7 @@ function createPyramidBlock(color, size, sizeUnit) {
 function createPyramidLayer(height, color, size, sizeUnit, isReversed, layerIndex) {
   const pyramidLayer = document.createElement("div");
   pyramidLayer.className = "pyramid-layer";
-  const blockCount = isReversed ? height - layerIndex + 1 : layerIndex + 1;
+  const blockCount = isReversed ? height - layerIndex : layerIndex + 1;
 
   for (let j = 0; j < blockCount; j++) {
     const pyramidBlock = createPyramidBlock(color, size, sizeUnit);
