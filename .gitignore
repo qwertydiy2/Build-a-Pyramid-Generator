@@ -160,3 +160,4 @@ Gemfile.lock
 
 # Linux Files
 bin/
+.vscode/settings.json
