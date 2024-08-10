@@ -32,10 +32,11 @@ function validatePyramidParameters({height, size, sizeUnit}) {
     throw new Error("Height must be a positive number.");
   }
 
-  if (sizeUnit === "px" && size * height > window.innerWidth) {
-    throw new Error("Size must not exceed the viewport width.");
-  } else if (sizeUnit === "%" && size * height > 100) {
-    throw new Error("Size must not exceed 100% of the viewport width.");
+  const maxSize = sizeUnit === "px" ? window.innerWidth : 100;
+  const maxSizeErrorMessage = sizeUnit === "px" ? "Size must not exceed the viewport width." : "Size must not exceed 100% of the viewport width.";
+
+  if (size * height > maxSize) {
+    throw new Error(maxSizeErrorMessage);
   }
 }
 
