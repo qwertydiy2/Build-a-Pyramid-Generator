@@ -108,9 +108,9 @@ suite('generatePyramid', () => {
     // Check each layer for the correct number of blocks
     for (let i = 0; i < pyramidLayersTwo.length; i++) {
       const layerBlocks =
-        pyramidLayersTwo[i].getElementsByClassName("pyramid-block");
+        pyramidLayersTwo[i].getElementsByClassName('pyramid-block')
       // For a normal pyramid, expected blocks equal the layer index + 1
-      const expectedBlocks = i + 1;
+      const expectedBlocks = i + 1
       assert.equal(
         layerBlocks.length,
         expectedBlocks,
@@ -412,8 +412,8 @@ suite('generatePyramid', () => {
   })
 })
 
-suite("getPyramidParameters", () => {
-  suiteSetup(async () => setupEnvironment());
+suite('getPyramidParameters', () => {
+  suiteSetup(async () => setupEnvironment())
 
   test('should return the correct pyramid parameters', () => {
     // Fill out the form fields
@@ -439,8 +439,8 @@ suite("getPyramidParameters", () => {
   })
 })
 
-suite("document.getElementById.addEventListener", () => {
-  suiteSetup(async () => setupEnvironment());
+suite('document.getElementById.addEventListener', () => {
+  suiteSetup(async () => setupEnvironment())
 
   test('When form submitted, then prevent form submission', () => {
     const form = document.getElementById('pyramid-form')
