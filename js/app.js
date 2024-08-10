@@ -1,8 +1,8 @@
 // import {generatePyramid} from
-document.getElementById("pyramid-form").addEventListener("submit", (event) => {
+document.getElementById('pyramid-form').addEventListener('submit', (event) => {
   // Prevent the form from being submitted
-  event.preventDefault();
-});
+  event.preventDefault()
+})
 
 /**
  * Retrieves pyramid parameters from the user input.
