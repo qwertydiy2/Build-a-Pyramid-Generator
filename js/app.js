@@ -11,25 +11,26 @@ document
  * @returns {Object}
  * Object with height, color, size, sizeUnit, and isReversed.
  */
-function getPyramidParameters() { // jshint ignore:line
-  const height = parseInt(document.getElementById("height").value, 10);
-  const color = document.getElementById("colour").value;
-  const size = parseInt(document.getElementById("size").value, 10);
+function getPyramidParameters () {
+  // jshint ignore:line
+  const height = parseInt(document.getElementById('height').value, 10)
+  const color = document.getElementById('colour').value
+  const size = parseInt(document.getElementById('size').value, 10)
   const sizeUnit = document.querySelector(
-    'input[name="size-unit"]:checked',
-  ).value;
+    'input[name="size-unit"]:checked'
+  ).value
   const isReversed =
     document.querySelector(
       'input[name="pyramid-direction"]:checked'
     ).value === "reversed";
 
-  return {height, color, size, sizeUnit, isReversed};
+  return { height, color, size, sizeUnit, isReversed }
 }
 
 
 function validatePyramidParameters({height, size, sizeUnit}) {
   if (isNaN(height) || height <= 0) {
-    throw new Error("Height must be a positive number.");
+    throw new Error('Height must be a positive number.')
   }
 
   const maxSize = sizeUnit === "px" ? window.innerWidth : 100;
