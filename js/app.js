@@ -29,11 +29,14 @@ function validatePyramidParameters ({ height, size, sizeUnit }) {
     throw new Error('Height must be a positive number.')
   }
 
-  const maxSize = sizeUnit === "px" ? window.innerWidth : 100;
-  const maxSizeErrorMessage = sizeUnit === "px" ? "Size must not exceed the viewport width." : "Size must not exceed 100% of the viewport width.";
+  const maxSize = sizeUnit === 'px' ? window.innerWidth : 100
+  const maxSizeErrorMessage =
+    sizeUnit === 'px'
+      ? 'Size must not exceed the viewport width.'
+      : 'Size must not exceed 100% of the viewport width.'
 
   if (size * height > maxSize) {
-    throw new Error(maxSizeErrorMessage);
+    throw new Error(maxSizeErrorMessage)
   }
 }
 
@@ -46,22 +49,17 @@ function createPyramidBlock (color, size, sizeUnit) {
   return pyramidBlock
 }
 
-function calculateBlockCount(height, isReversed, layerIndex) {
-  return isReversed ? height - layerIndex : layerIndex + 1;
+function calculateBlockCount (height, isReversed, layerIndex) {
+  return isReversed ? height - layerIndex : layerIndex + 1
 }
 
-function createPyramidLayer(
-  color,
-  size,
-  sizeUnit,
-  blocks,
-) {
-  const pyramidLayer = document.createElement("div");
-  pyramidLayer.className = "pyramid-layer";
+function createPyramidLayer (color, size, sizeUnit, blocks) {
+  const pyramidLayer = document.createElement('div')
+  pyramidLayer.className = 'pyramid-layer'
 
   for (let j = 0; j < blocks; j++) {
-    const pyramidBlock = createPyramidBlock(color, size, sizeUnit);
-    pyramidLayer.appendChild(pyramidBlock);
+    const pyramidBlock = createPyramidBlock(color, size, sizeUnit)
+    pyramidLayer.appendChild(pyramidBlock)
   }
 
   return pyramidLayer
@@ -78,13 +76,8 @@ function generatePyramid ({ height, color, size, sizeUnit, isReversed }) {
 
   for (let i = 0; i < height; i++) {
     const blockCount = calculateBlockCount(height, isReversed, i)
-    const pyramidLayer = createPyramidLayer(
-      color,
-      size,
-      sizeUnit,
-      blockCount
-    );
-    pyramidContainer.appendChild(pyramidLayer);
+    const pyramidLayer = createPyramidLayer(color, size, sizeUnit, blockCount)
+    pyramidContainer.appendChild(pyramidLayer)
   }
 
   body.appendChild(pyramidContainer)
