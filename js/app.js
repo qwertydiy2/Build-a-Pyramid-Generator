@@ -24,7 +24,6 @@ function getPyramidParameters () {
   return { height, color, size, sizeUnit, isReversed }
 }
 
-
 /**
  * Validates the parameters for generating a pyramid.
  *
@@ -35,7 +34,7 @@ function getPyramidParameters () {
  * @throws {Error} If the height is not a positive number.
  * @throws {Error} If the calculated size exceeds the maximum size based on the size unit.
  */
-function validatePyramidParameters({height, size, sizeUnit}) {
+function validatePyramidParameters ({ height, size, sizeUnit }) {
   if (isNaN(height) || height <= 0) {
     throw new Error('Height must be a positive number.')
   }
@@ -59,25 +58,25 @@ function validatePyramidParameters({height, size, sizeUnit}) {
  * @param {string} sizeUnit - The unit of measurement for the size (either "px" or "%").
  * @returns {HTMLSpanElement} The created pyramid block element.
  */
-function createPyramidBlock(color, size, sizeUnit) {
-  const pyramidBlock = document.createElement("span");
-  pyramidBlock.className = "pyramid-block";
-  pyramidBlock.style.backgroundColor = color;
-  pyramidBlock.style.width = sizeUnit === "px" ? `${size}px` : `${size}%`;
-  pyramidBlock.style.height = size;
-  return pyramidBlock;
+function createPyramidBlock (color, size, sizeUnit) {
+  const pyramidBlock = document.createElement('span')
+  pyramidBlock.className = 'pyramid-block'
+  pyramidBlock.style.backgroundColor = color
+  pyramidBlock.style.width = sizeUnit === 'px' ? `${size}px` : `${size}%`
+  pyramidBlock.style.height = size
+  return pyramidBlock
 }
 
 /**
  * Calculates the number of blocks in a layer of a pyramid.
- * 
+ *
  * @param {number} height - The height of the pyramid.
  * @param {boolean} isReversed - Indicates whether the pyramid is reversed or not.
  * @param {number} layerIndex - The index of the layer in the pyramid.
  * @returns {number} The number of blocks in the specified layer.
  */
-function calculateBlockCount(height, isReversed, layerIndex) {
-  return isReversed ? height - layerIndex : layerIndex + 1;
+function calculateBlockCount (height, isReversed, layerIndex) {
+  return isReversed ? height - layerIndex : layerIndex + 1
 }
 
 /**
@@ -89,14 +88,9 @@ function calculateBlockCount(height, isReversed, layerIndex) {
  * @param {number} blocks - The number of blocks in the pyramid layer.
  * @returns {HTMLDivElement} The created pyramid layer element.
  */
-function createPyramidLayer(
-  color,
-  size,
-  sizeUnit,
-  blocks,
-) {
-  const pyramidLayer = document.createElement("div");
-  pyramidLayer.className = "pyramid-layer";
+function createPyramidLayer (color, size, sizeUnit, blocks) {
+  const pyramidLayer = document.createElement('div')
+  pyramidLayer.className = 'pyramid-layer'
 
   for (let j = 0; j < blocks; j++) {
     const pyramidBlock = createPyramidBlock(color, size, sizeUnit)
@@ -116,8 +110,8 @@ function createPyramidLayer(
  * @param {string} options.sizeUnit - The unit of measurement for the size of the pyramid blocks.
  * @param {boolean} options.isReversed - Indicates whether the pyramid should be reversed.
  */
-function generatePyramid({height, color, size, sizeUnit, isReversed}) {
-  validatePyramidParameters({height, size, sizeUnit});
+function generatePyramid ({ height, color, size, sizeUnit, isReversed }) {
+  validatePyramidParameters({ height, size, sizeUnit })
 
   const pyramidContainerRemove = document.getElementById('pyramid-container')
   const body = document.querySelector('body')
