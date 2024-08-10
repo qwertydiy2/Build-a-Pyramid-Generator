@@ -1,7 +1,7 @@
-// import {generatePyramid} from
-document.getElementById('pyramid-form').addEventListener('submit', event => {
+const pyramidForm = document.getElementById('pyramid-form')
+pyramidForm.addEventListener('submit', event => {
   // Prevent the form from being submitted
-  event.preventDefault()
+  event.preventDefault();
 });
 
 /**
