@@ -19,7 +19,9 @@ function getPyramidParameters() { // jshint ignore:line
     'input[name="size-unit"]:checked',
   ).value;
   const isReversed =
-    document.querySelector('input[name="pyramid-direction"]:checked').value === "reversed";
+    document.querySelector(
+      'input[name="pyramid-direction"]:checked'
+    ).value === "reversed";
 
   return {height, color, size, sizeUnit, isReversed};
 }
@@ -46,7 +48,14 @@ function createPyramidBlock(color, size, sizeUnit) {
   return pyramidBlock;
 }
 
-function createPyramidLayer(height, color, size, sizeUnit, isReversed, layerIndex) {
+function createPyramidLayer(
+  height,
+  color,
+  size,
+  sizeUnit,
+  isReversed,
+  layerIndex
+) {
   const pyramidLayer = document.createElement("div");
   pyramidLayer.className = "pyramid-layer";
   const blockCount = isReversed ? height - layerIndex : layerIndex + 1;
@@ -69,7 +78,13 @@ function generatePyramid({height, color, size, sizeUnit, isReversed}) {
   pyramidContainer.setAttribute('id', 'pyramid-container');
 
   for (let i = 0; i < height; i++) {
-    const pyramidLayer = createPyramidLayer(height, color, size, sizeUnit, isReversed, i);
+    const pyramidLayer = createPyramidLayer(
+      height,
+      color,
+      size,
+      sizeUnit,
+      isReversed,
+      i);
     pyramidContainer.appendChild(pyramidLayer);
   }
 

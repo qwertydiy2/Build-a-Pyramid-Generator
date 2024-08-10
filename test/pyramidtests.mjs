@@ -107,7 +107,8 @@ suite("generatePyramid", () => {
     for (let i = 0; i < pyramidLayersTwo.length; i++) {
       const layerBlocks =
         pyramidLayersTwo[i].getElementsByClassName("pyramid-block");
-      const expectedBlocks = i + 1; // For a normal pyramid, expected blocks equal the layer index + 1
+      // For a normal pyramid, expected blocks equal the layer index + 1
+      const expectedBlocks = i + 1;
       assert.equal(
         layerBlocks.length,
         expectedBlocks,
