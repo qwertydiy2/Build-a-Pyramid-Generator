@@ -89,7 +89,8 @@ suite('generatePyramid', () => {
         )
       }
     }
-
+  });
+  test("should generate pyramid with correct parameters & block counts for size in percentager", () => {
     // Edge case: Size in percentage
     window.generatePyramid({
       height: 5,
