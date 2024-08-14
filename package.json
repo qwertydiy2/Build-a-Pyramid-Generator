@@ -32,6 +32,9 @@
     "webpack-merge": "^6.0.1"
   },
   "dependencies": {
+    "@types/chai": "^4.3.17",
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^22.3.0",
     "jsdom": "^24.1.1",
     "typescript": "^5.5.4",
     "zombie": "^6.1.4"
