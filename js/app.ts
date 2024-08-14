@@ -1,5 +1,5 @@
-const pyramidForm = document.getElementById('pyramid-form');
-pyramidForm!.addEventListener('submit', event => {
+const pyramidForm = document.getElementById("pyramid-form");
+pyramidForm!.addEventListener("submit", (event) => {
   // Prevent the form from being submitted
   event.preventDefault();
 });
@@ -11,19 +11,19 @@ pyramidForm!.addEventListener('submit', event => {
  */
 function getPyramidParameters(): object {
   // jshint ignore:line
-  const height = (<HTMLInputElement>document.getElementById('height'))!.value;
-  const color = (<HTMLInputElement>document.getElementById('colour'))!.value;
-  const size = (<HTMLInputElement>document.getElementById('size'))!.value;
-  const sizeUnit = (<HTMLInputElement>document.querySelector(
-    'input[name="size-unit"]:checked'
+  const height = (<HTMLInputElement>document.getElementById("height"))!.value;
+  const color = (<HTMLInputElement>document.getElementById("colour"))!.value;
+  const size = (<HTMLInputElement>document.getElementById("size"))!.value;
+  const sizeUnit = (<HTMLInputElement>(
+    document.querySelector('input[name="size-unit"]:checked')
   ))!.value;
   const isReversed =
-    (<HTMLInputElement>document.querySelector('input[name="pyramid-direction"]:checked'))!.value ===
-    'reversed';
+    (<HTMLInputElement>(
+      document.querySelector('input[name="pyramid-direction"]:checked')
+    ))!.value === "reversed";
 
-  return {height, color, size, sizeUnit, isReversed}
+  return { height, color, size, sizeUnit, isReversed };
 }
-
 
 /**
  * Validates the parameters for generating a pyramid.
@@ -35,19 +35,27 @@ function getPyramidParameters(): object {
  * @throws {Error} If the height is not a positive number.
  * @throws {Error} If the calculated size exceeds the maximum size based on the size unit.
  */
-function validatePyramidParameters({height, size, sizeUnit}: { height: number; size: number; sizeUnit: "%" | "px" }) {
+function validatePyramidParameters({
+  height,
+  size,
+  sizeUnit,
+}: {
+  height: number;
+  size: number;
+  sizeUnit: "%" | "px";
+}) {
   if (isNaN(height) || height <= 0) {
-    throw new Error('Height must be a positive number.')
+    throw new Error("Height must be a positive number.");
   }
 
-  const maxSize = sizeUnit === 'px' ? window.innerWidth : 100;
+  const maxSize = sizeUnit === "px" ? window.innerWidth : 100;
   const maxSizeErrorMessage =
-    sizeUnit === 'px'
-      ? 'Size must not exceed the viewport width.'
-      : 'Size must not exceed 100% of the viewport width.';
+    sizeUnit === "px"
+      ? "Size must not exceed the viewport width."
+      : "Size must not exceed 100% of the viewport width.";
 
   if (size * height > maxSize) {
-    throw new Error(maxSizeErrorMessage)
+    throw new Error(maxSizeErrorMessage);
   }
 }
 
@@ -77,7 +85,11 @@ function createPyramidBlock(color: string, size: number, sizeUnit: string) {
  * @param {number} layerIndex - The index of the layer in the pyramid.
  * @returns {number} The number of blocks in the specified layer.
  */
-function calculateBlockCount(height: number, isReversed: boolean, layerIndex: number) {
+function calculateBlockCount(
+  height: number,
+  isReversed: boolean,
+  layerIndex: number,
+) {
   return isReversed ? height - layerIndex : layerIndex + 1;
 }
 
@@ -101,10 +113,10 @@ function createPyramidLayer(
 
   for (let j = 0; j < blocks; j++) {
     const pyramidBlock = createPyramidBlock(color, size, sizeUnit);
-    pyramidLayer.appendChild(pyramidBlock)
+    pyramidLayer.appendChild(pyramidBlock);
   }
 
-  return pyramidLayer
+  return pyramidLayer;
 }
 
 /**
@@ -117,20 +129,26 @@ function createPyramidLayer(
  * @param {string} options.sizeUnit - The unit of measurement for the size of the pyramid blocks.
  * @param {boolean} options.isReversed - Indicates whether the pyramid should be reversed.
  */
-function generatePyramid({height, color, size, sizeUnit, isReversed}: {
+function generatePyramid({
+  height,
+  color,
+  size,
+  sizeUnit,
+  isReversed,
+}: {
   height: number;
   color: string;
   size: number;
   sizeUnit: "%" | "px";
   isReversed: boolean;
 }) {
-  validatePyramidParameters({height, size, sizeUnit});
+  validatePyramidParameters({ height, size, sizeUnit });
 
-  const pyramidContainerRemove = document.getElementById('pyramid-container')!;
-  const body = document.querySelector('body')!;
+  const pyramidContainerRemove = document.getElementById("pyramid-container")!;
+  const body = document.querySelector("body")!;
   body.removeChild(pyramidContainerRemove);
-  const pyramidContainer = document.createElement('div');
-  pyramidContainer.setAttribute('id', 'pyramid-container');
+  const pyramidContainer = document.createElement("div");
+  pyramidContainer.setAttribute("id", "pyramid-container");
 
   for (let i = 0; i < height; i++) {
     const blockCount = calculateBlockCount(height, isReversed, i);
