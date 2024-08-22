@@ -1,20 +1,21 @@
 {
   "name": "@qwertydiy2/build-a-pyramid-generator",
   "version": "0.0.1",
-  "description": "",
+  "description": "This is a simple Pyramid Generator built with JavaScript. It allows users to generate a pyramid of a specified height.",
   "private": true,
-  "keywords": [
-    ""
-  ],
-  "license": "",
+  "keywords": [],
+  "license": "ISC",
   "author": "",
   "scripts": {
     "test": "mocha -u tdd 'test/**/*.{js,mjs,ts,tsx}' --timeout 60000",
     "start": "webpack serve --open --config webpack.config.dev.js",
     "build": "webpack --config webpack.config.prod.js",
-    "coverage": "c8 --reporter=lcov npm run test"
+    "coverage": "c8 --reporter=lcov npm run test",
+    "babel": "npx babel dist --out-dir dist --extensions '.js,.mjs,.ts,.tsx' --ignore 'test/**/* --source-maps inline"
   },
   "devDependencies": {
+    "@types/jsdom": "^21.1.7",
+    "@types/mocha": "^10.0.7",
     "c8": "^10.1.2",
     "chai": "^5.1.1",
     "copy-webpack-plugin": "^12.0.2",
@@ -26,6 +27,7 @@
     "stylelint-config-standard": "^36.0.1",
     "stylelint-config-standard-scss": "^13.1.0",
     "stylelint-order": "^6.0.4",
+    "ts-mocha": "^10.0.0",
     "webpack": "^5.93.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4",
@@ -33,10 +35,27 @@
   },
   "dependencies": {
     "@types/chai": "^4.3.17",
-    "@types/jsdom": "^21.1.7",
     "@types/node": "^22.3.0",
+    "core-js": "^3.38.1",
+    "cross-env": "^7.0.3",
+    "esm": "^3.2.25",
     "jsdom": "^24.1.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.5.4",
     "zombie": "^6.1.4"
-  }
+  },
+  "main": "webpack.common.js",
+  "module": "main.js",
+  "type": "module",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qwertydiy2/Build-a-Pyramid-Generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/qwertydiy2/Build-a-Pyramid-Generator/issues"
+  },
+  "homepage": "https://github.com/qwertydiy2/Build-a-Pyramid-Generator#readme"
 }

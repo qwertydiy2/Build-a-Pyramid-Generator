@@ -4,19 +4,21 @@ pyramidForm!.addEventListener('submit', event => {
   event.preventDefault();
 });
 
+import { PyramidBlockElement, PyramidLayerElement } from './interfaces';
+
 /**
  * Retrieves pyramid parameters from the user input.
  * @returns {Object}
  * Object with height, color, size, sizeUnit, and isReversed.
  */
-function getPyramidParameters(): object {
+function getPyramidParameters(): { height: number; color: string; size: number; sizeUnit: "%"|"px"; isReversed: boolean } {
   // jshint ignore:line
-  const height = (<HTMLInputElement>document.getElementById('height'))!.value;
+  const height = Number((<HTMLInputElement>document.getElementById('height'))!.value);
   const color = (<HTMLInputElement>document.getElementById('colour'))!.value;
-  const size = (<HTMLInputElement>document.getElementById('size'))!.value;
+  const size = Number((<HTMLInputElement>document.getElementById('size'))!.value);
   const sizeUnit = (<HTMLInputElement>document.querySelector(
     'input[name="size-unit"]:checked'
-  ))!.value;
+  ))!.value as "%" | "px";
   const isReversed =
     (<HTMLInputElement>document.querySelector('input[name="pyramid-direction"]:checked'))!.value ===
     'reversed';
@@ -35,7 +37,7 @@ function getPyramidParameters(): object {
  * @throws {Error} If the height is not a positive number.
  * @throws {Error} If the calculated size exceeds the maximum size based on the size unit.
  */
-function validatePyramidParameters({height, size, sizeUnit}: { height: number; size: number; sizeUnit: "%" | "px" }) {
+function validatePyramidParameters({height, size, sizeUnit}: { height: number; size: number; sizeUnit: "%" | "px" }): void|Error {
   if (isNaN(height) || height <= 0) {
     throw new Error('Height must be a positive number.')
   }
@@ -59,14 +61,13 @@ function validatePyramidParameters({height, size, sizeUnit}: { height: number; s
  * @param { "%" | "px" } sizeUnit - The unit for the size ("px" or "%").
  * @returns {HTMLSpanElement} The created pyramid block element.
  */
-function createPyramidBlock(color: string, size: number, sizeUnit: string) {
+function createPyramidBlock(color: string, size: number, sizeUnit: string): PyramidBlockElement {
   const pyramidBlock = document.createElement("span");
   pyramidBlock.className = "pyramid-block";
   pyramidBlock.style.backgroundColor = color;
-  const sizeStr = String(size);
-  pyramidBlock.style.width = sizeUnit === "px" ? `${sizeStr}px` : `${sizeStr}%`;
+  pyramidBlock.style.width = sizeUnit === "px" ? `${size}px` : `${size}%`;
   pyramidBlock.style.height = String(size);
-  return pyramidBlock;
+  return <PyramidBlockElement>pyramidBlock;
 }
 
 /**
@@ -77,7 +78,7 @@ function createPyramidBlock(color: string, size: number, sizeUnit: string) {
  * @param {number} layerIndex - The index of the layer in the pyramid.
  * @returns {number} The number of blocks in the specified layer.
  */
-function calculateBlockCount(height: number, isReversed: boolean, layerIndex: number) {
+function calculateBlockCount(height: number, isReversed: boolean, layerIndex: number): number {
   return isReversed ? height - layerIndex : layerIndex + 1;
 }
 
@@ -95,7 +96,7 @@ function createPyramidLayer(
   size: number,
   sizeUnit: "%" | "px",
   blocks: number,
-) {
+): PyramidLayerElement {
   const pyramidLayer = document.createElement("div");
   pyramidLayer.className = "pyramid-layer";
 
@@ -104,7 +105,7 @@ function createPyramidLayer(
     pyramidLayer.appendChild(pyramidBlock)
   }
 
-  return pyramidLayer
+  return <PyramidLayerElement>pyramidLayer
 }
 
 /**
@@ -123,7 +124,7 @@ function generatePyramid({height, color, size, sizeUnit, isReversed}: {
   size: number;
   sizeUnit: "%" | "px";
   isReversed: boolean;
-}) {
+}): void {
   validatePyramidParameters({height, size, sizeUnit});
 
   const pyramidContainerRemove = document.getElementById('pyramid-container')!;
@@ -140,3 +141,4 @@ function generatePyramid({height, color, size, sizeUnit, isReversed}: {
 
   body!.appendChild(pyramidContainer);
 }
+

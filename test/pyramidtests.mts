@@ -1,13 +1,42 @@
 import {assert} from 'chai'
-import {JSDOM} from 'jsdom'
+
+import {JSDOM} from 'jsdom';
+
+import {PyramidBlockElement, PyramidLayerElement, PyramidFormElements} from "../js/interfaces"
+import "jsdom/base";
+// import "jsdom/base";
+
+declare global {
+  interface Window {
+    validatePyramidParameters: (params: { height: number, size: number, sizeUnit: string }) => void;
+    createPyramidBlock: (color: string, size: number, sizeUnit: string) => HTMLElement;
+    calculateBlockCount: (height: number, isReversed: boolean, layer: number) => number;
+    createPyramidLayer: (color: string, size: number, sizeUnit: string, blockCount: number) => HTMLElement;
+    generatePyramid: (params: {
+      height: number,
+      color: string,
+      size: number,
+      sizeUnit: string,
+      isReversed: boolean
+    }) => void;
+    getPyramidParameters: () => {
+      height: number;
+      color: string;
+      size: number;
+      sizeUnit: "%" | "px";
+      isReversed: boolean
+    };
+  }
+}
 
 async function setupEnvironment() {
   const dom = await JSDOM.fromFile('index.html', {
     runScripts: 'dangerously',
     resources: 'usable'
   });
-  global.window = dom.window;
+  global.window = dom.window as unknown as Window & typeof globalThis;
   global.document = dom.window.document;
+
   // Wait for scripts to load and execute
   await new Promise(resolve => {
     dom.window.onload = resolve;
@@ -83,7 +112,7 @@ suite("createPyramidLayer", () => {
   });
   test("should create a pyramid layer with correct number of blocks", () => {
     const layer = window.createPyramidLayer("#ff0000", 20, "px", 5);
-    const blocks = layer.getElementsByClassName("pyramid-block");
+    const blocks = layer.getElementsByClassName("pyramid-block") as unknown as PyramidBlockElement[];
     assert.equal(blocks.length, 5, "Layer does not have the correct number of blocks");
   });
 });
@@ -102,16 +131,16 @@ suite("generatePyramid", () => {
       isReversed: false,
     });
     const pyramidContainer = document.getElementById("pyramid-container");
-    const pyramidLayers = pyramidContainer.getElementsByClassName("pyramid-layer");
+    const pyramidLayers = pyramidContainer!.getElementsByClassName("pyramid-layer") as unknown as PyramidLayerElement[];
 
     assert.equal(pyramidLayers.length, 5, 'Pyramid does not have 5 layers');
 
     for (let i = 0; i < pyramidLayers.length; i++) {
-      const layerBlocks = pyramidLayers[i].getElementsByClassName("pyramid-block");
+      const layerBlocks = pyramidLayers[i].getElementsByClassName("pyramid-block") as unknown as PyramidBlockElement[];
       assert.equal(layerBlocks.length, i + 1, `Layer ${i + 1} does not have the correct number of blocks`);
-      for (let j = 0; j < layerBlocks.length; j++) {
-        assert.equal(layerBlocks[j].style.width, "20px", "Block width does not match");
-        assert.equal(layerBlocks[j].style.backgroundColor, "rgb(255, 0, 0)", "Block color does not match");
+      for (const item of layerBlocks) {
+        assert.equal(item.style.width, "20px", "Block width does not match");
+        assert.equal(item.style.backgroundColor, "rgb(255, 0, 0)", "Block color does not match");
       }
     }
   });
@@ -125,20 +154,20 @@ suite("generatePyramid", () => {
       isReversed: false,
     });
     const pyramidContainer = document.getElementById("pyramid-container");
-    const pyramidLayers = pyramidContainer.getElementsByClassName("pyramid-layer");
+    const pyramidLayers = pyramidContainer!.getElementsByClassName("pyramid-layer") as unknown as PyramidLayerElement[];
     const pyramidContainerTwo = document.getElementById('pyramid-container');
-    const pyramidLayersTwo = pyramidContainerTwo.getElementsByClassName('pyramid-layer');
+    const pyramidLayersTwo = pyramidContainerTwo!.getElementsByClassName('pyramid-layer') as unknown as PyramidLayerElement[];
 
     assert.equal(pyramidLayers.length, 5, "Pyramid does not have 5 layers");
     assert.equal(pyramidLayersTwo.length, 5, 'Pyramid does not have 5 layers');
 
     for (let i = 0; i < pyramidLayers.length; i++) {
-      const layerBlocks = pyramidLayers[i].getElementsByClassName("pyramid-block");
+      const layerBlocks = pyramidLayers[i].getElementsByClassName("pyramid-block") as unknown as PyramidBlockElement[];
       assert.equal(layerBlocks.length, i + 1, `Layer ${i + 1} does not have the correct number of blocks`);
     }
     // Check each layer for the correct number of blocks
     for (let i = 0; i < pyramidLayersTwo.length; i++) {
-      const layerBlocks = pyramidLayersTwo[i].getElementsByClassName('pyramid-block');
+      const layerBlocks = pyramidLayersTwo[i].getElementsByClassName('pyramid-block') as unknown as PyramidBlockElement[];
       // For a normal pyramid, expected blocks equal the layer index + 1
       const expectedBlocks = i + 1;
       assert.equal(
@@ -150,9 +179,9 @@ suite("generatePyramid", () => {
         layerBlocks,
         'First layer of pyramid should have blocks'
       );
-      for (let j = 0; j < layerBlocks.length; j++) {
-        assert.equal(layerBlocks[j].style.width, "10%", "Block width does not match");
-        assert.equal(layerBlocks[j].style.backgroundColor, "rgb(0, 255, 0)", "Block color does not match");
+      for (const item of layerBlocks) {
+        assert.equal(item.style.width, "10%", "Block width does not match");
+        assert.equal(item.style.backgroundColor, "rgb(0, 255, 0)", "Block color does not match");
       }
     }
   });
@@ -165,9 +194,9 @@ suite("generatePyramid", () => {
       sizeUnit: "px",
       isReversed: true,
     });
-    const pyramidLayers = document.getElementsByClassName("pyramid-layer");
+    const pyramidLayers = document.getElementsByClassName("pyramid-layer") as unknown as PyramidLayerElement[];
     for (let i = 0; i < pyramidLayers.length; i++) {
-      const layerBlocks = pyramidLayers[i].getElementsByClassName("pyramid-block");
+      const layerBlocks = pyramidLayers[i].getElementsByClassName("pyramid-block") as unknown as PyramidBlockElement[];
       assert.equal(layerBlocks.length, 3 - i, `Layer ${i + 1} does not have the correct number of blocks`);
     }
   });
@@ -184,9 +213,9 @@ suite("generatePyramid", () => {
         sizeUnit: "px",
         isReversed: false,
       });
-      const pyramidBlocks = document.getElementsByClassName("pyramid-block");
-      for (let i = 0; i < pyramidBlocks.length; i++) {
-        assert.equal(pyramidBlocks[i].style.backgroundColor, expectedColors[index], "Block color does not match");
+      const pyramidBlocks = document.getElementsByClassName("pyramid-block") as unknown as PyramidBlockElement[];
+      for (const item of pyramidBlocks) {
+        assert.equal(item.style.backgroundColor, expectedColors[index], "Block color does not match");
       }
     });
   });
@@ -198,15 +227,14 @@ suite("getPyramidParameters", () => {
   test('should return the correct pyramid parameters', () => {
     // Fill out the form fields
     const pyramidSize = 20;
-    document.getElementById('height').value = 5;
-    document.getElementById('colour').value = '#ff0000';
-    document.querySelector(
+    (document.getElementById('height') as PyramidFormElements["height"]).value = "5";
+    (document.getElementById('colour') as PyramidFormElements["colour"]).value = '#ff0000';
+    (document.querySelector(
       "input[name='pyramid-direction'][value='normal']"
-    ).checked = true;
-    document.getElementById('size').value = pyramidSize;
-    document.querySelector("input[name='size-unit'][value='px']").checked =
+    ) as PyramidFormElements["pyramidDirection"]).checked = true;
+    (document.getElementById('size') as PyramidFormElements["size"]).value = String(pyramidSize);
+    (document.querySelector("input[name='size-unit'][value='px']") as PyramidFormElements["sizeUnit"]).checked =
       true;
-
     const pyramidParameters = window.getPyramidParameters();
     assert.equal(pyramidParameters.height, 5, 'Incorrect pyramid height');
     assert.equal(pyramidParameters.color, '#ff0000', 'Incorrect pyramid color');
@@ -230,7 +258,7 @@ suite('document.getElementById.addEventListener', () => {
       cancelable: true
     });
 
-    form.dispatchEvent(event);
+    form!.dispatchEvent(event);
 
     assert.isTrue(event.defaultPrevented, 'Form submission was not prevented');
   });
