@@ -1,68 +1,68 @@
 <!doctype html>
 <html class="no-js" lang="">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title></title>
-  <link rel="stylesheet" href="css/style.css"/>
-  <meta name="description" content=""/>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+    <link rel="stylesheet" href="css/style.css" />
+    <meta name="description" content="" />
 
-  <meta property="og:title" content=""/>
-  <meta property="og:type" content=""/>
-  <meta property="og:url" content=""/>
-  <meta property="og:image" content=""/>
-  <meta property="og:image:alt" content=""/>
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:image:alt" content="" />
 
-  <link rel="icon" href="/favicon.ico" sizes="any"/>
-  <link rel="icon" href="/icon.svg" type="image/svg+xml"/>
-  <link rel="apple-touch-icon" href="icon.png"/>
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icon.png" />
 
-  <link rel="manifest" href="site.webmanifest"/>
-  <meta name="theme-color" content="#fafafa"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-    rel="stylesheet"
-  />
-</head>
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#fafafa" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
-<h1 id="title">Pyramid Generator</h1>
-<form id="pyramid-form">
-  <label for="height" class="form-heading">Height:</label>
-  <input type="number" id="height" name="height" required/>
-  <br/>
-  <label for="colour" class="form-heading">Colour:</label>
-  <input type="color" id="colour" name="colour"/>
-  <br/>
-  <label class="form-heading-lite">
-    <input type="radio" name="pyramid-direction" value="normal" checked/>
-    Normal
-  </label>
-  <label class="form-heading-lite">
-    <input type="radio" name="pyramid-direction" value="reversed"/>
-    Reversed
-  </label>
-  <br/>
-  <label for="size" class="form-heading">Size:</label>
-  <input type="text" id="size" name="size" placeholder="Enter size"/>
-  <label class="form-heading-lite">
-    <input type="radio" name="size-unit" value="px" checked/> Pixels
-  </label>
-  <label class="form-heading-lite">
-    <input type="radio" name="size-unit" value="%"/> Percentage of viewport
-  </label>
-  <br/>
-  <button
-    onclick="// noinspection NestedFunctionCallJS
+  <body>
+    <h1 id="title">Pyramid Generator</h1>
+    <form id="pyramid-form">
+      <label for="height" class="form-heading">Height:</label>
+      <input type="number" id="height" name="height" required />
+      <br />
+      <label for="colour" class="form-heading">Colour:</label>
+      <input type="color" id="colour" name="colour" />
+      <br />
+      <label class="form-heading-lite">
+        <input type="radio" name="pyramid-direction" value="normal" checked />
+        Normal
+      </label>
+      <label class="form-heading-lite">
+        <input type="radio" name="pyramid-direction" value="reversed" />
+        Reversed
+      </label>
+      <br />
+      <label for="size" class="form-heading">Size:</label>
+      <input type="text" id="size" name="size" placeholder="Enter size" />
+      <label class="form-heading-lite">
+        <input type="radio" name="size-unit" value="px" checked /> Pixels
+      </label>
+      <label class="form-heading-lite">
+        <input type="radio" name="size-unit" value="%" /> Percentage of viewport
+      </label>
+      <br />
+      <button
+        onclick="// noinspection NestedFunctionCallJS
 generatePyramid(getPyramidParameters())"
-  >
-    Generate Pyramid
-  </button>
-</form>
-<div id="pyramid-container"></div>
+      >
+        Generate Pyramid
+      </button>
+    </form>
+    <div id="pyramid-container"></div>
 
-<script src="dist/js/app.js"></script>
-</body>
+    <script src="dist/js/app.js"></script>
+  </body>
 </html>
