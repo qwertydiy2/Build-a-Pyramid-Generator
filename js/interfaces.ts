@@ -9,10 +9,25 @@ export interface PyramidLayerElement extends HTMLDivElement {
 }
 
 export interface PyramidFormElements {
-  height: HTMLInputElement & { id: "height"; name: "height"; required: true; type: "text" };
+  height: HTMLInputElement & {
+    id: "height";
+    name: "height";
+    required: true;
+    type: "text";
+  };
   colour: HTMLInputElement & { id: "colour"; name: "colour"; type: "text" };
-  pyramidDirection: HTMLInputElement & { name: "pyramid-direction"; type: "radio" };
-  size: HTMLInputElement & { id: "size"; name: "size"; placeholder: "Enter size"; type: "text" };
+  pyramidDirection: HTMLInputElement & {
+    name: "pyramid-direction";
+    type: "radio";
+  };
+  size: HTMLInputElement & {
+    id: "size";
+    name: "size";
+    placeholder: "Enter size";
+    type: "text";
+  };
   sizeUnit: HTMLInputElement & { name: "size-unit"; type: "radio" };
-  generateButton: HTMLButtonElement & { onclick: "generatePyramid(getPyramidParameters())" };
+  generateButton: HTMLButtonElement & {
+    onclick: "generatePyramid(getPyramidParameters())";
+  };
 }
